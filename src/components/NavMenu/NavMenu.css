@@ -14,30 +14,38 @@ nav h1 {
 .nav-logo {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 70px;
 }
 
 nav ul,
 a {
-  list-style: none;
-  text-decoration: none;
   width: 100%;
-  text-align: center;
   height: 100%;
   line-height: 35px;
   transition: 0.5s;
-  color: #000;
-  font-weight: 500;
   border-radius: 2px;
   padding: 0;
+  color: #000 !important;
+  text-decoration: none !important;
+  font-weight: bolder;
+  text-align: left;
 }
 
 nav ul li {
   width: 100%;
-  padding: 5px 0;
+  padding: 2px 0;
   display: flex;
 }
 
+nav ul li p {
+  margin-left: 30px;
+}
+
 nav ul a:hover {
-  background-color: rgba(90, 141, 59, 0.952);
+  background-color: #97bf11;
   color: #fff;
+}
+
+.nav-items {
+  color: #000;
 }
