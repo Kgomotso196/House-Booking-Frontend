@@ -9,6 +9,7 @@ import AddHouse from './components/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
+import HouseDetails from './components/HouseDetails/HouseDetails';
 
 function App() {
   const ReservationsData = useSelector((state) => state.reservations.reservations);
@@ -49,6 +50,7 @@ function App() {
       <div className="App">
         <h1>Data appears here</h1>
         <Home />
+        <HouseDetails />
         <AddHouse />
         <DeleteHouse />
         <AddReservation />
