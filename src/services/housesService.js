@@ -14,17 +14,6 @@ const fetchHouses = createAsyncThunk(
   },
 );
 
-// sample house data
-
-// const houseData = {
-//   house_name: 'House Name',
-//   house_image: 'Image URL',
-//   house_price: 100000,
-//   description: 'Description',
-//   location: 'Location',
-//   user_id: 1,
-// };
-
 const addHouse = createAsyncThunk(
   'houses/addHouse',
   async (houseData, thunkAPI) => {
@@ -37,6 +26,28 @@ const addHouse = createAsyncThunk(
   },
 );
 
-const houseServiceAPI = { fetchHouses, addHouse };
+// delete an existing studio
+
+const deleteHouse = createAsyncThunk(
+  'houses/deleteHouse',
+  async (houseId, thunkAPI) => {
+    try {
+      const response = await axios.delete(
+        `${baseUrl}/api/v1/houses/${houseId}`,
+        {
+          // headers: {
+          //   authorization: thunkAPI.getState().auth.token,
+          // },
+        },
+      );
+      thunkAPI.dispatch(fetchHouses());
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
+const houseServiceAPI = { fetchHouses, addHouse, deleteHouse };
 
 export default houseServiceAPI;
