@@ -14,4 +14,27 @@ const fetchHouses = createAsyncThunk(
   },
 );
 
+// sample house data
+
+const houseData = {
+  house_name: 'House Name',
+  house_image: 'Image URL',
+  house_price: 100000,
+  description: 'Description',
+  location: 'Location',
+  user_id: 1,
+};
+
+export const addHouse = createAsyncThunk(
+  'houses/addHouse',
+  async (houseData, thunkAPI) => {
+    try {
+      const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
 export default fetchHouses;
