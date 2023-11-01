@@ -6,12 +6,13 @@ import Home from './components/Home';
 import AddHouse from './components/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
+import Reservations from './components/Reservations';
 import houseServiceAPI from './services/housesService';
 import reservationServiceAPI from './services/reservationService';
 
 function App() {
-  const Reservations = useSelector((state) => state.reservations.reservations);
-  const Houses = useSelector((state) => state.houses.houses);
+  const ReservationsData = useSelector((state) => state.reservations.reservations);
+  const HousesData = useSelector((state) => state.houses.houses);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,24 +25,23 @@ function App() {
 
   // display houses
 
-  if (Houses.length === 0) {
+  if (HousesData.length === 0) {
     houseData = <p>No house data</p>;
   } else {
-    Houses.map((data) => {
-      houseData = <p>{data.house_name}</p>;
-      return houseData;
-    });
+    houseData = HousesData.map((data) => (
+      <p key={data.id}>{data.house_name}</p>
+    ));
   }
 
   // display reservations
 
-  if (Reservations.length === 0) {
+  if (ReservationsData.length === 0) {
     reserveData = <p>No reservation Data</p>;
+  } else {
+    reserveData = ReservationsData.map((data) => (
+      <p key={data.checking_date}>{data.checking_date}</p>
+    ));
   }
-  Reservations.map((data) => {
-    reserveData = <p key={data.checking_date}>{data.checking_date}</p>;
-    return reserveData;
-  });
 
   return (
     <>

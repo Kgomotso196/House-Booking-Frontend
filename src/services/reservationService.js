@@ -14,15 +14,6 @@ const fetchReservations = createAsyncThunk(
   },
 );
 
-// const reservationData = {
-//   checking_date: '2023-10-30',
-//   checkout_date: '2023-11-05',
-//   city: 'New York',
-//   house_price: 1500,
-//   user_id: 1,
-//   house_id: 2,
-// };
-
 const addReservation = createAsyncThunk(
   'reservations/addReservation',
   async (reservationData, thunkAPI) => {
@@ -35,6 +26,23 @@ const addReservation = createAsyncThunk(
   },
 );
 
-const reservationServiceAPI = { fetchReservations, addReservation };
+const deleteReservation = createAsyncThunk(
+  'reservation/deleteReservation',
+  async ({ studioId, reservationId }, thunkAPI) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/api/v1/studios/${studioId}/reservations/${reservationId}`,
+        {
+          // headers: {
+          //   authorization: thunkAPI.getState().auth.token,
+          // },
+        });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
+const reservationServiceAPI = { fetchReservations, addReservation, deleteReservation };
 
 export default reservationServiceAPI;

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addReservation } from '../../services/reservationService';
+import reservationServiceAPI from '../../services/reservationService';
 
 // Set the initial state
 const initialState = {
@@ -10,8 +10,8 @@ const initialState = {
 };
 
 // Create slice
-const reservationSlice = createSlice({
-  name: 'reservation',
+const postReservationSlice = createSlice({
+  name: 'postReservation',
   initialState,
   reducers: {
     resetSuccessful: (state) => ({ ...state, isSuccessfull: false }),
@@ -19,18 +19,18 @@ const reservationSlice = createSlice({
   extraReducers: (builder) => {
     // create a new reservation
     builder
-      .addCase(addReservation.pending, (state) => ({
+      .addCase(reservationServiceAPI.addReservation.pending, (state) => ({
         ...state,
         isLoading: true,
         isSuccessfull: false,
       }))
-      .addCase(addReservation.fulfilled, (state, action) => ({
+      .addCase(reservationServiceAPI.addReservation.fulfilled, (state, action) => ({
         ...state,
         reservations: [...state.reservations, action.payload],
         isLoading: false,
         isSuccessfull: true,
       }))
-      .addCase(addReservation.rejected, (state, action) => ({
+      .addCase(reservationServiceAPI.addReservation.rejected, (state, action) => ({
         ...state,
         error: action.payload.error,
         isLoading: false,
@@ -39,5 +39,5 @@ const reservationSlice = createSlice({
   },
 });
 
-export const { resetSuccessful } = reservationSlice.actions;
-export default reservationSlice.reducer;
+export const { resetSuccessful } = postReservationSlice.actions;
+export default postReservationSlice.reducer;

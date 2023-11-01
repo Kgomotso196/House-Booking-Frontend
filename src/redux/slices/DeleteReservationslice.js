@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addReservation } from '../../services/reservationService';
+import reservationServiceAPI from '../../services/reservationService';
 
 // Set the initial state
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 // Create slice
-const reservationSlice = createSlice({
+const deleteReservationSlice = createSlice({
   name: 'reservation',
   initialState,
   reducers: {
@@ -19,18 +19,18 @@ const reservationSlice = createSlice({
   extraReducers: (builder) => {
     // delete an existing reservation
     builder
-      .addCase(deleteReservation.pending, (state) => ({
+      .addCase(reservationServiceAPI.deleteReservation.pending, (state) => ({
         ...state,
         isLoading: true,
       }))
-      .addCase(deleteReservation.fulfilled, (state, action) => ({
+      .addCase(reservationServiceAPI.deleteReservation.fulfilled, (state, action) => ({
         ...state,
         reservations: state.reservations.filter(
           (reservation) => reservation.id !== action.payload.id,
         ),
         isLoading: false,
       }))
-      .addCase(deleteReservation.rejected, (state, action) => ({
+      .addCase(reservationServiceAPI.deleteReservation.rejected, (state, action) => ({
         ...state,
         error: action.payload.error,
         isLoading: false,
@@ -38,5 +38,5 @@ const reservationSlice = createSlice({
   },
 });
 
-export const { resetSuccessful } = reservationSlice.actions;
-export default reservationSlice.reducer;
+export const { resetSuccessful } = deleteReservationSlice.actions;
+export default deleteReservationSlice.reducer;
