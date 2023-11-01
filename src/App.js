@@ -1,28 +1,23 @@
-import './App.css';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
-// import fetchReservations from './services/reservationService';
-// import fetchHouses from './services/housesService';
-// import Home from './components/Home';
+import Home from './components/Home';
 import AddHouse from './components/Addhouse/AddHouse';
-// import DeleteHouse from './components/DeleteHouse';
-// import AddReservation from './components/AddReservation';
-// import Reservations from './components/Reservations';
-// import HouseDetails from './components/HouseDetails/HouseDetails';
+import DeleteHouse from './components/DeleteHouse';
+import AddReservation from './components/AddReservation';
+import Reservations from './components/Reservations';
 
 function App() {
   return (
     <>
       <NavMenu />
-      <div className="App">
-        {/* <Home />
-        <HouseDetails /> */}
-        <AddHouse />
-        {/* <DeleteHouse />
-        <AddReservation />
-        <Reservations /> */}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add-house" element={<AddHouse />} />
+        <Route path="/delete-house" element={<DeleteHouse />} />
+        <Route path="/add-reservation" element={<AddReservation />} />
+        <Route path="/reservations" element={<Reservations />} />
+      </Routes>
     </>
   );
 }
