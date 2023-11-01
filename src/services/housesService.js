@@ -16,16 +16,16 @@ const fetchHouses = createAsyncThunk(
 
 // sample house data
 
-const houseData = {
-  house_name: 'House Name',
-  house_image: 'Image URL',
-  house_price: 100000,
-  description: 'Description',
-  location: 'Location',
-  user_id: 1,
-};
+// const houseData = {
+//   house_name: 'House Name',
+//   house_image: 'Image URL',
+//   house_price: 100000,
+//   description: 'Description',
+//   location: 'Location',
+//   user_id: 1,
+// };
 
-export const addHouse = createAsyncThunk(
+const addHouse = createAsyncThunk(
   'houses/addHouse',
   async (houseData, thunkAPI) => {
     try {
@@ -37,4 +37,6 @@ export const addHouse = createAsyncThunk(
   },
 );
 
-export default fetchHouses;
+const houseServiceAPI = { fetchHouses, addHouse };
+
+export default houseServiceAPI;

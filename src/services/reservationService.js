@@ -14,16 +14,16 @@ const fetchReservations = createAsyncThunk(
   },
 );
 
-const reservationData = {
-  checking_date: '2023-10-30',
-  checkout_date: '2023-11-05', 
-  city: 'New York', 
-  house_price: 1500,
-  user_id: 1,
-  house_id: 2,
-};
+// const reservationData = {
+//   checking_date: '2023-10-30',
+//   checkout_date: '2023-11-05',
+//   city: 'New York',
+//   house_price: 1500,
+//   user_id: 1,
+//   house_id: 2,
+// };
 
-export const addReservation = createAsyncThunk(
+const addReservation = createAsyncThunk(
   'reservations/addReservation',
   async (reservationData, thunkAPI) => {
     try {
@@ -35,4 +35,6 @@ export const addReservation = createAsyncThunk(
   },
 );
 
-export default fetchReservations;
+const reservationServiceAPI = { fetchReservations, addReservation };
+
+export default reservationServiceAPI;

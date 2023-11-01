@@ -3,8 +3,8 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import fetchReservations from './services/reservationService';
-import fetchHouses from './services/housesService';
+import houseServiceAPI from './services/housesService';
+import reservationServiceAPI from './services/reservationService';
 
 function App() {
   const Reservations = useSelector((state) => state.reservations.reservations);
@@ -13,8 +13,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchReservations());
-    dispatch(fetchHouses());
+    dispatch(reservationServiceAPI.fetchReservations());
+    dispatch(houseServiceAPI.fetchHouses());
   }, [dispatch]);
 
   let reserveData;

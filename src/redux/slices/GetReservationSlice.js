@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchReservations from '../../services/reservationService';
+import reservationServiceAPI from '../../services/reservationService';
 
 // Set the initial state
 export const initialState = {
@@ -9,7 +9,7 @@ export const initialState = {
   isSuccessfull: false,
 };
 
-const reservationSlice = createSlice({
+const getReservationSlice = createSlice({
   name: 'reservation',
   initialState,
   reducers: {
@@ -18,16 +18,16 @@ const reservationSlice = createSlice({
   extraReducers: (builder) => {
     // fetch all existing reservations
     builder
-      .addCase(fetchReservations.pending, (state) => ({
+      .addCase(reservationServiceAPI.fetchReservations.pending, (state) => ({
         ...state,
         isLoading: true,
       }))
-      .addCase(fetchReservations.fulfilled, (state, action) => ({
+      .addCase(reservationServiceAPI.fetchReservations.fulfilled, (state, action) => ({
         ...state,
         reservations: action.payload,
         isLoading: false,
       }))
-      .addCase(fetchReservations.rejected, (state) => ({
+      .addCase(reservationServiceAPI.fetchReservations.rejected, (state) => ({
         ...state,
         error: 'Error',
         isLoading: false,
@@ -35,5 +35,5 @@ const reservationSlice = createSlice({
   },
 });
 
-export const { resetSuccessful } = reservationSlice.actions;
-export default reservationSlice.reducer;
+export const { resetSuccessful } = getReservationSlice.actions;
+export default getReservationSlice.reducer;
