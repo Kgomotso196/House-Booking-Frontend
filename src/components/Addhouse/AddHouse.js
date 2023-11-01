@@ -5,6 +5,7 @@ import './AddHouse.css';
 
 const AddHouse = () => {
   const dispatch = useDispatch();
+  const [error, setError] = useState('');
   const [houseData, setHouseData] = useState({
     name: '',
     image: '',
@@ -37,6 +38,7 @@ const AddHouse = () => {
     ) {
       // Handle the case where not all values are present (e.g., show an error message)
       console.log('Please fill in all fields.');
+      setError('Please fill in all fields');
     } else {
       // Regular expression to validate the image URL format
       const urlRegex = /^(http|https):\/\/[^\s/$.?#].[^\s]*$/;
@@ -63,6 +65,7 @@ const AddHouse = () => {
 
   return (
     <div className="add-house">
+      {error && <div className="alert alert-danger">{error}</div>}
       <h1>ADD A NEW HOUSE</h1>
       <form className="add-house-form" onSubmit={handleSubmit}>
         <label htmlFor="houseName" className="form-label">
