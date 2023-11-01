@@ -10,12 +10,17 @@ const AddHouse = () => {
     location: '',
     description: '',
   });
-
+  // const testData = {
+  //   house_name: 'Cozy Cottage',
+  //   house_image: 'cottage.jpg',
+  //   location: '1234 Elm Street, Anytown, USA',
+  //   description: 'A beautiful and cozy cottage in a quiet neighborhood.',
+  //   user_id: 1,
+  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setHouseData({ ...houseData, [name]: value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -29,11 +34,17 @@ const AddHouse = () => {
       // Handle the case where not all values are present (e.g., show an error message)
       console.log('Please fill in all fields.');
     } else {
-      // All values are present, you can proceed with form submission
-      // Add your logic to handle the form submission here
-      console.log('House Data', houseData);
+      const updatedHouseData = {
+        house_name: houseData.name,
+        house_image: houseData.image,
+        location: houseData.location,
+        description: houseData.description,
+        user_id: 1, // Include the user_id here
+      };
+      console.log('House Data', updatedHouseData);
+
       try {
-        dispatch(addHouse(houseData));
+        dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
       } catch (error) {
         console.error('Error dispatching the addHouse action:', error);
       }
