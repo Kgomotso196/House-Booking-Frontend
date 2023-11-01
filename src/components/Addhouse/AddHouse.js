@@ -37,14 +37,13 @@ const AddHouse = () => {
       || !houseData.description
     ) {
       // Handle the case where not all values are present (e.g., show an error message)
-      console.log('Please fill in all fields.');
       setError('Please fill in all fields');
     } else {
       // Regular expression to validate the image URL format
       const urlRegex = /^(http|https):\/\/[^\s/$.?#].[^\s]*$/;
       if (!urlRegex.test(houseData.image)) {
         // If the image URL is not in the correct format, set an error message
-        setValidationErrors({ ...validationErrors, image: 'Invalid image URL format' });
+        setValidationErrors({ ...validationErrors, image: '🛑 INVALID URL ' });
       } else {
         // Image URL is valid, proceed to dispatch the action
         const updatedHouseData = {
@@ -57,7 +56,7 @@ const AddHouse = () => {
         try {
           dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
         } catch (error) {
-          console.error('Error dispatching the addHouse action:', error);
+          setError('OPPS 😬 Something went wrong', error);
         }
       }
     }
@@ -88,7 +87,7 @@ const AddHouse = () => {
             value={houseData.image}
             onChange={handleChange}
             id="houseimage"
-            className="form-control"
+            className={`form-control ${validationErrors.image ? 'input-error' : ''}`}
             placeholder="Enter House image"
           />
           {/* Display the validation error message if it exists */}
