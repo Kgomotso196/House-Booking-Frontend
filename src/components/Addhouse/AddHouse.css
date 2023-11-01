@@ -21,3 +21,6 @@ align-items: center;
 .form-label {
     color:#000;
 }
+.error-message{
+    color: red;
+}

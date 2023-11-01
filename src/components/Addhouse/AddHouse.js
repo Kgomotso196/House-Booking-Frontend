@@ -11,10 +11,20 @@ const AddHouse = () => {
     location: '',
     description: '',
   });
+
+  // Add a state to track validation errors
+  const [validationErrors, setValidationErrors] = useState({
+    image: '',
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setHouseData({ ...houseData, [name]: value });
+
+    // Reset the validation error when the user makes changes
+    setValidationErrors({ ...validationErrors, [name]: '' });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -28,17 +38,25 @@ const AddHouse = () => {
       // Handle the case where not all values are present (e.g., show an error message)
       console.log('Please fill in all fields.');
     } else {
-      const updatedHouseData = {
-        house_name: houseData.name,
-        house_image: houseData.image,
-        location: houseData.location,
-        description: houseData.description,
-        user_id: 1, // Include the user_id here
-      };
-      try {
-        dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
-      } catch (error) {
-        console.error('Error dispatching the addHouse action:', error);
+      // Regular expression to validate the image URL format
+      const urlRegex = /^(http|https):\/\/[^\s/$.?#].[^\s]*$/;
+      if (!urlRegex.test(houseData.image)) {
+        // If the image URL is not in the correct format, set an error message
+        setValidationErrors({ ...validationErrors, image: 'Invalid image URL format' });
+      } else {
+        // Image URL is valid, proceed to dispatch the action
+        const updatedHouseData = {
+          house_name: houseData.name,
+          house_image: houseData.image,
+          location: houseData.location,
+          description: houseData.description,
+          user_id: 1, // Include the user_id here
+        };
+        try {
+          dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
+        } catch (error) {
+          console.error('Error dispatching the addHouse action:', error);
+        }
       }
     }
   };
@@ -70,6 +88,10 @@ const AddHouse = () => {
             className="form-control"
             placeholder="Enter House image"
           />
+          {/* Display the validation error message if it exists */}
+          {validationErrors.image && (
+            <p className="error-message">{validationErrors.image}</p>
+          )}
         </label>
         <label htmlFor="houseLocation" className="form-label">
           House Location
