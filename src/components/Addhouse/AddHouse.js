@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
+import './AddHouse.css';
 
 const AddHouse = () => {
   const dispatch = useDispatch();
@@ -10,13 +11,6 @@ const AddHouse = () => {
     location: '',
     description: '',
   });
-  // const testData = {
-  //   house_name: 'Cozy Cottage',
-  //   house_image: 'cottage.jpg',
-  //   location: '1234 Elm Street, Anytown, USA',
-  //   description: 'A beautiful and cozy cottage in a quiet neighborhood.',
-  //   user_id: 1,
-  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setHouseData({ ...houseData, [name]: value });
@@ -41,8 +35,6 @@ const AddHouse = () => {
         description: houseData.description,
         user_id: 1, // Include the user_id here
       };
-      console.log('House Data', updatedHouseData);
-
       try {
         dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
       } catch (error) {
@@ -53,9 +45,9 @@ const AddHouse = () => {
 
   return (
     <div className="add-house">
-      <h1 className="text-primary">Add New House</h1>
+      <h1>ADD A NEW HOUSE</h1>
       <form className="add-house-form" onSubmit={handleSubmit}>
-        <label htmlFor="houseName" className="form-label text-primary">
+        <label htmlFor="houseName" className="form-label">
           House Name
           <input
             type="text"
@@ -67,7 +59,7 @@ const AddHouse = () => {
             placeholder="Enter House Name"
           />
         </label>
-        <label htmlFor="houseimage" className="form-label text-primary">
+        <label htmlFor="houseimage" className="form-label">
           House Image
           <input
             type="text"
@@ -79,7 +71,7 @@ const AddHouse = () => {
             placeholder="Enter House image"
           />
         </label>
-        <label htmlFor="houseLocation" className="form-label text-primary">
+        <label htmlFor="houseLocation" className="form-label">
           House Location
           <input
             type="text"
@@ -91,7 +83,7 @@ const AddHouse = () => {
             placeholder="Enter House Location"
           />
         </label>
-        <label htmlFor="houseDescription" className="form-label text-primary">
+        <label htmlFor="houseDescription" className="form-label">
           Description
           <input
             type="text"
@@ -104,7 +96,7 @@ const AddHouse = () => {
           />
         </label>
         <div>
-          <input type="submit" className="btn btn-primary" value="Add House" />
+          <input type="submit" className="btn btn-primary" value="ADD HOUSE" />
         </div>
       </form>
     </div>

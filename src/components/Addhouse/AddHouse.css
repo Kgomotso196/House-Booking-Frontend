@@ -1,0 +1,23 @@
+.add-house{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+justify-items: center;
+align-items: center;
+}
+.add-house-form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.btn{
+    background-color: #97BF0F;
+    border: none;
+}
+.btn:hover{
+    background-color: green;
+}
+.form-label {
+    color:#000;
+}
