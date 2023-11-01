@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reservationReducer from './slices/ReservationSlice';
-import housesReducer from './slices/HousesSlice';
+import getReservationSlice from './slices/GetReservationSlice';
+import getHosesSlice from './slices/GetHosesSlice';
+import postReservationSlice from './slices/PostReservationSlice';
+import postHousesSlice from './slices/PostHousesSlice';
 
 const store = configureStore({
   reducer: {
-    reservations: reservationReducer,
-    houses: housesReducer,
+    reservations: getReservationSlice,
+    houses: getHosesSlice,
+    postReservations: postReservationSlice,
+    postHouses: postHousesSlice,
   },
 });
 

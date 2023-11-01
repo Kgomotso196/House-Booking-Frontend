@@ -1,9 +1,10 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+
+import houseServiceAPI from './services/housesService';
+import reservationServiceAPI from './services/reservationService';
 import NavMenu from './components/NavMenu/NavMenu';
-import fetchReservations from './services/reservationService';
-import fetchHouses from './services/housesService';
 import Home from './components/Home';
 import AddHouse from './components/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
@@ -16,8 +17,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchReservations());
-    dispatch(fetchHouses());
+    dispatch(reservationServiceAPI.fetchReservations());
+    dispatch(houseServiceAPI.fetchHouses());
   }, [dispatch]);
 
   let reserveData;

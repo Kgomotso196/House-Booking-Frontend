@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchHouses from '../../services/housesService';
+import houseServiceAPI from '../../services/housesService';
 
 // Set the initial state
 export const initialState = {
@@ -9,7 +9,7 @@ export const initialState = {
   isSuccessfull: false,
 };
 
-const housesSlice = createSlice({
+const getHousesSlice = createSlice({
   name: 'Houses',
   initialState,
   reducers: {
@@ -18,16 +18,16 @@ const housesSlice = createSlice({
   extraReducers: (builder) => {
     // fetch all existing houses
     builder
-      .addCase(fetchHouses.pending, (state) => ({
+      .addCase(houseServiceAPI.fetchHouses.pending, (state) => ({
         ...state,
         isLoading: true,
       }))
-      .addCase(fetchHouses.fulfilled, (state, action) => ({
+      .addCase(houseServiceAPI.fetchHouses.fulfilled, (state, action) => ({
         ...state,
         houses: action.payload,
         isLoading: false,
       }))
-      .addCase(fetchHouses.rejected, (state) => ({
+      .addCase(houseServiceAPI.fetchHouses.rejected, (state) => ({
         ...state,
         error: 'Error',
         isLoading: false,
@@ -35,5 +35,5 @@ const housesSlice = createSlice({
   },
 });
 
-export const { resetSuccessful } = housesSlice.actions;
-export default housesSlice.reducer;
+export const { resetSuccessful } = getHousesSlice.actions;
+export default getHousesSlice.reducer;
