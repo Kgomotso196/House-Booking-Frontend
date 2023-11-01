@@ -1,5 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
-import AddHouse from '../../components/Addhouse/AddHouse';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { baseUrl } from '../../helpers/helpers';
+
+export const addHouse = createAsyncThunk(
+  'houses/addHouse',
+  async (houseData, thunkAPI) => {
+    try {
+      // Convert the houseData to a JSON string
+      const jsonData = JSON.stringify(houseData);
+
+      const response = await axios.post(`${baseUrl}/api/v1/houses`, jsonData, {
+        headers: {
+          'Content-Type': 'application/json', // Set the Content-Type header
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
 
 const initialState = {
   houses: [],
@@ -15,20 +36,19 @@ const houseSlice = createSlice({
     resetSuccessful: (state) => ({ ...state, isSuccessfull: false }),
   },
   extraReducers: (builder) => {
-    // create a new reservation
     builder
-      .addCase(AddHouse.pending, (state) => ({
+      .addCase(addHouse.pending, (state) => ({
         ...state,
         isLoading: true,
         isSuccessfull: false,
       }))
-      .addCase(AddHouse.fulfilled, (state, action) => ({
+      .addCase(addHouse.fulfilled, (state, action) => ({
         ...state,
-        reservations: [...state.reservations, action.payload],
+        houses: [...state.houses, action.payload],
         isLoading: false,
         isSuccessfull: true,
       }))
-      .addCase(AddHouse.rejected, (state, action) => ({
+      .addCase(addHouse.rejected, (state, action) => ({
         ...state,
         error: action.payload.error,
         isLoading: false,
