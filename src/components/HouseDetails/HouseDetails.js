@@ -1,4 +1,6 @@
 import React from 'react';
+// import { UseSelector } from 'react-redux/es/hooks/useSelector';
+// import { useParams } from 'react-router-dom';
 import './HouseDetails.css';
 
 const HouseDetails = () => (
@@ -8,7 +10,9 @@ const HouseDetails = () => (
       <h1>House Name: </h1>
       <p>Location</p>
       <p>Description</p>
-
+      <div>
+        <button type="button" className="reserve" onClick={console.log('reserve')}>Reserve</button>
+      </div>
     </div>
   </div>
 );

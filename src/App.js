@@ -5,7 +5,7 @@ import NavMenu from './components/NavMenu/NavMenu';
 import fetchReservations from './services/reservationService';
 import fetchHouses from './services/housesService';
 import Home from './components/Home';
-import AddHouse from './components/AddHouse';
+import AddHouse from './components/Addhouse/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
