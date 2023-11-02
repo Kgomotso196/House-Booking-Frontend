@@ -4,9 +4,9 @@ import { baseUrl } from '../helpers/helpers';
 
 const registerUser = createAsyncThunk(
     'user/register',
-    async (houseData, thunkAPI) => {
+    async (userData, thunkAPI) => {
       try {
-        const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData);
+        const response = await axios.post(`${baseUrl}/api/v1/registrations`, userData);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue({ error: error.message });
@@ -16,9 +16,9 @@ const registerUser = createAsyncThunk(
 
 const signInUser = createAsyncThunk(
     'user/signin',
-    async (houseData, thunkAPI) => {
+    async (logInData, thunkAPI) => {
       try {
-        const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData);
+        const response = await axios.post(`${baseUrl}/api/v1/sessions`, logInData);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue({ error: error.message });
