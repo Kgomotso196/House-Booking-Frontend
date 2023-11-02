@@ -1,5 +1,7 @@
 .house-details{
-    border: 2px solid red;
+    margin-left: 17%;
+    display: flex;
+    justify-content: space-between;
 }
 img{
     height: 20%;
