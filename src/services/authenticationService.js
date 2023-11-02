@@ -14,8 +14,19 @@ const registerUser = createAsyncThunk(
     },
 );
 
+const signInUser = createAsyncThunk(
+    'user/signin',
+    async (houseData, thunkAPI) => {
+      try {
+        const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue({ error: error.message });
+      }
+    },
+);
 
-const authenticationServiceAPI = { registerUser}
+const authenticationServiceAPI = { registerUser, signInUser}
 
 export default authenticationServiceAPI;
 
