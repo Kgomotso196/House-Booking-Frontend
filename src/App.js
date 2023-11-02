@@ -1,5 +1,6 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import NavMenu from './components/NavMenu/NavMenu';
 import Home from './components/Home';
@@ -44,25 +45,27 @@ function App() {
   }
 
   return (
-    <>
-      <NavMenu />
-      <div className="App">
-        <h1>Data appears here</h1>
-        <Home />
-        <AddHouse />
-        <DeleteHouse />
-        <AddReservation />
-        <Reservations />
-        <div>
-          <strong>From reservationSlice:</strong>
-          {reserveData}
+    <Router>
+      <>
+        <NavMenu />
+        <div className="App">
+          <h1>Data appears here</h1>
+          <Route exact path="/" component={Home} />
+          <Route path="/add-house" component={AddHouse} />
+          <Route path="/delete-house" component={DeleteHouse} />
+          <Route path="/add-reservation" component={AddReservation} />
+          <Route path="/reservations" component={Reservations} />
+          <div>
+            <strong>From reservationSlice:</strong>
+            {reserveData}
+          </div>
+          <div>
+            <strong>From housesSlice:</strong>
+            {houseData}
+          </div>
         </div>
-        <div>
-          <strong>From housesSlice:</strong>
-          {houseData}
-        </div>
-      </div>
-    </>
+      </>
+    </Router>
   );
 }
 
