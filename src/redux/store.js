@@ -3,6 +3,7 @@ import getReservationSlice from './slices/GetReservationSlice';
 import getHosesSlice from './slices/GetHosesSlice';
 import postReservationSlice from './slices/PostReservationSlice';
 import postHousesSlice from './slices/PostHousesSlice';
+import authSlice from './slices/AuthentificationSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     houses: getHosesSlice,
     postReservations: postReservationSlice,
     postHouses: postHousesSlice,
+    authentication: authSlice,
   },
 });
 
