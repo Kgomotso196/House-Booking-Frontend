@@ -1,0 +1,25 @@
+.spashSection {
+    height: 100vh;
+}
+
+.spashSubSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.splashContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.splashContainer div {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 5% 90%;
+    cursor: pointer;
+}
