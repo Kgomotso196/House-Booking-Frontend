@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import reservationServiceAPI from '../services/reservationService';
 
 const Reservations = () => {
- const dispatch = useDispatch();
-  const {reservations} = useSelector((state) => state.reservations);
+  const dispatch = useDispatch();
+  const { reservations } = useSelector((state) => state.reservations);
 
   useEffect(() => {
     if (!reservations.length) {
       dispatch(reservationServiceAPI.fetchReservations());
     }
-    
   }, [dispatch, reservations.length]);
 
   return (
