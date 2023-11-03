@@ -1,41 +1,60 @@
-import { createSlice } from '@reduxjs/toolkit';
-import houseServiceAPI from '../../services/housesService';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { baseUrl } from '../../helpers/helpers';
 
-// Set the initial state
-export const initialState = {
+export const addHouse = createAsyncThunk(
+  'houses/addHouse',
+  async (houseData, thunkAPI) => {
+    try {
+      // Convert the houseData to a JSON string
+      const jsonData = JSON.stringify(houseData);
+
+      const response = await axios.post(`${baseUrl}/api/v1/houses`, jsonData, {
+        headers: {
+          'Content-Type': 'application/json', // Set the Content-Type header
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
+const initialState = {
   houses: [],
   isLoading: false,
   error: null,
   isSuccessfull: false,
 };
 
-const postHousesSlice = createSlice({
-  name: 'studio',
+const houseSlice = createSlice({
+  name: 'house',
   initialState,
   reducers: {
     resetSuccessful: (state) => ({ ...state, isSuccessfull: false }),
   },
   extraReducers: (builder) => {
-    // create a new studio
     builder
-      .addCase(houseServiceAPI.addHouse.pending, (state) => ({
+      .addCase(addHouse.pending, (state) => ({
         ...state,
-        status: 'loading',
-        isSuccessful: false,
+        isLoading: true,
+        isSuccessfull: false,
       }))
-      .addCase(houseServiceAPI.addHouse.fulfilled, (state) => ({
+      .addCase(addHouse.fulfilled, (state, action) => ({
         ...state,
-        status: 'successful',
-        isSuccessful: true,
+        houses: [...state.houses, action.payload],
+        isLoading: false,
+        isSuccessfull: true,
       }))
-      .addCase(houseServiceAPI.addHouse.rejected, (state, action) => ({
+      .addCase(addHouse.rejected, (state, action) => ({
         ...state,
-        status: 'failed',
-        error: action.error.message,
-        isSuccessful: false,
+        error: action.payload.error,
+        isLoading: false,
+        isSuccessfull: false,
       }));
   },
 });
-
-export const { resetSuccessful } = postHousesSlice.actions;
-export default postHousesSlice.reducer;
+export const { resetSuccessful } = houseSlice.actions;
+export default houseSlice.reducer;
