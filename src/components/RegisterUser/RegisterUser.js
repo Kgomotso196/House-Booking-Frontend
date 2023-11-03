@@ -9,7 +9,7 @@ const RegisterUser = () => {
 
     const handleChange = (e) => {
         console.log(e)
-    };
+      };
 
   return (
     <div>   <form className=" " onSubmit={handleSubmit}>

@@ -18,6 +18,9 @@ function App() {
         <Route path="/delete-house" element={<DeleteHouse />} />
         <Route path="/add-reservation" element={<AddReservation />} />
         <Route path="/reservations" element={<Reservations />} />
+        {/* remove these codes */}
+        <Route path="/reservations" element={<Reservations />} />
+
       </Routes>
     </>
   );
