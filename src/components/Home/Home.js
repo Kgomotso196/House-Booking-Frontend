@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import houseServiceAPI from '../../services/housesService';
+import './Home.css';
 
 const Home = () => {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.houses.houses);
   const isLoading = useSelector((state) => state.houses.isLoading);
   const error = useSelector((state) => state.houses.error);
+
+  const containerRef = useRef(null);
 
   useEffect(() => {
     dispatch(houseServiceAPI.fetchHouses());
@@ -31,17 +34,38 @@ const Home = () => {
     id: house.id || index,
   }));
 
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= 100;
+    }
+  };
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += 100;
+    }
+  };
+
   return (
-    <div className="home">
+    <div className="home-page">
       <h1>Welcome To House Reservations</h1>
-      <div className="house-list">
+      <button type="button" className="scroll-btn scroll-left" onClick={scrollLeft}>
+        &lt;
+      </button>
+      <div className="house-list" ref={containerRef}>
         {simplifiedHouses.map((house) => (
           <div className="house-card" key={house.id}>
-            <img src={house.house_image} alt={house.house_name} />
-            <p>{house.house_name}</p>
+            <div className="circular-container">
+              <img src={house.house_image} alt={house.house_name} />
+            </div>
+            <p className="house-name">{house.house_name}</p>
+            <button type="button" className="details-button">See Details</button>
           </div>
         ))}
       </div>
+      <button type="button" className="scroll-btn scroll-right" onClick={scrollRight}>
+        &gt;
+      </button>
     </div>
   );
 };
