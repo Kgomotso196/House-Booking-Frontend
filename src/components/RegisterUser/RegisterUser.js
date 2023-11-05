@@ -1,28 +1,51 @@
-import React from 'react';
-import './RegisterUser.css';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authenticationServiceAPI from '../../services/authenticationService';
+import './Registeruser.css';
 
 const RegisterUser = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
-  };
+  const [RegisterData, setRegisterData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    passowrd_confirmation: '',
+  });
+
+  const [error, setError] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    console.log(e);
+    const { name, value } = e.target;
+    setRegisterData({ ...RegisterData, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedRegistrationData = {
+      user: {
+        name: RegisterData.name,
+        email: RegisterData.email,
+        password: RegisterData.password,
+        password_confirmation: RegisterData.passowdConfirmation,
+      },
+    };
+    setError('its successful');
+    dispatch(authenticationServiceAPI.registerUser(updatedRegistrationData));
+  };
   return (
     <section className="registerSection">
       <div className="registerSubSection">
         {' '}
         <form className="registerForm" onSubmit={handleSubmit}>
           <h1>Register Here</h1>
+          {error && <div className=" ">{error}</div>}
           <label htmlFor="UserName" className="">
             Enter Name
             <input
               type="text"
-              name="userName"
-              value=""
+              name="name"
+              value={RegisterData.name}
               onChange={handleChange}
               id="UserName"
               className=""
@@ -34,7 +57,7 @@ const RegisterUser = () => {
             <input
               type="email"
               name="email"
-              value=""
+              value={RegisterData.email}
               onChange={handleChange}
               id="UserEmail"
               className=""
@@ -44,9 +67,9 @@ const RegisterUser = () => {
           <label htmlFor="UserPassword" className="">
             Password
             <input
-              type="text"
-              name="Password"
-              value=""
+              type="password"
+              name="password"
+              value={RegisterData.password}
               onChange={handleChange}
               id="UserPassword"
               className=""
@@ -56,9 +79,9 @@ const RegisterUser = () => {
           <label htmlFor="UserPasswordConfirmation" className="">
             Confirm
             <input
-              type="text"
-              name="PasswordConfirmation"
-              value=""
+              type="password"
+              name="passowrd_confirmation"
+              value={RegisterData.passowrd_confirmation}
               onChange={handleChange}
               id="UserPasswordConfirmation"
               className=""

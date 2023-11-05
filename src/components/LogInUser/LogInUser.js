@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authenticationServiceAPI from '../../services/authenticationService';
 import './LogInUser.css';
 
 const LogInUser = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
-  };
+  const [LogInData, setLogInData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [error, setError] = useState('');
+  console.log(error);
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    console.log(e);
+    const { name, value } = e.target;
+    setLogInData({ ...LogInData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedLogInData = {
+      user: {
+        email: LogInData.email,
+        password: LogInData.password,
+      },
+    };
+    setError('its successful');
+    console.log(updatedLogInData);
+    dispatch(authenticationServiceAPI.signInUser(updatedLogInData));
   };
 
   return (
@@ -20,9 +41,9 @@ const LogInUser = () => {
           <label htmlFor="UserEmail" className="">
             User Email
             <input
-              type="text"
-              name="userEmail"
-              value=""
+              type="email"
+              name="email"
+              value={LogInData.email}
               onChange={handleChange}
               id="UserEmail"
               className=""
@@ -33,9 +54,9 @@ const LogInUser = () => {
           <label htmlFor="UserPassword" className="">
             Password
             <input
-              type="text"
-              name="Password"
-              value=""
+              type="password"
+              name="password"
+              value={LogInData.password}
               onChange={handleChange}
               id="UserPassword"
               className=""
