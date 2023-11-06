@@ -18,7 +18,7 @@ const Reservations = () => {
       <ul>
         {reservations.map((reservation) => (
           <li key={reservation.id}>
-            <p>{reservation.house_price}</p>
+            {/* <p>{reservation.house_price}</p> */}
             <p>{reservation.city}</p>
             <p>{reservation.checking_date}</p>
           </li>
