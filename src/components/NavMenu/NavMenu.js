@@ -10,8 +10,8 @@ const NavMenu = () => {
 
   return (
     <>
-      <header className="bg-dark text-light"><i className="fa-solid fa-bars" role="button" tabIndex={0} onClick={openMenu} onKeyDown={openMenu} aria-label="toggle nav" /></header>
-      <nav className={`col-4 col-md-2 flex-column ${sidebar ? 'open' : ''}`}>
+      <header className="bg-dark text-light"><i className="fa-solid fa-bars position-fixed" role="button" tabIndex={0} onClick={openMenu} onKeyDown={openMenu} aria-label="toggle nav" /></header>
+      <nav className={`col-4 col-md-2 flex-column ${sidebar ? 'open' : ''} position-fixed`} style={{ zIndex: '1000' }}>
         <p className="d-flex justify-content-end p-2"><i className="fa-solid fa-x text-light" role="button" tabIndex={0} onClick={openMenu} onKeyDown={openMenu} aria-label="toggle nav" /></p>
         <img className="nav-logo" src={navlogo} width={140} height={40} alt="Navbar logo" />
         <ul className="nav-items d-flex flex-column fs-6 pt-4">
