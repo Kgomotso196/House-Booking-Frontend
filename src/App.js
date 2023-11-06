@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
 // import Home from './components/Home';
@@ -10,8 +11,17 @@ import HouseDetails from './components/HouseDetails/HouseDetails';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import RegisterUser from './components/RegisterUser/RegisterUser';
 import LogInUser from './components/LogInUser/LogInUser';
+import authenticationServiceAPI from './services/authenticationService';
 
 function App() {
+  // const value = useSelector((state) => state.authentication.user);
+  // console.log(value);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authenticationServiceAPI.checkLogInStatus());
+  }, [dispatch]);
+
   return (
     <>
       <NavMenu />
