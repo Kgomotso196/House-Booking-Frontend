@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import houseServiceAPI from '../../services/housesService';
 import './Home.css';
@@ -9,11 +9,19 @@ const Home = () => {
   const isLoading = useSelector((state) => state.houses.isLoading);
   const error = useSelector((state) => state.houses.error);
 
-  const containerRef = useRef(null);
-
   useEffect(() => {
     dispatch(houseServiceAPI.fetchHouses());
   }, [dispatch]);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const scrollLeft = () => {
+    setScrollPosition((prevPosition) => prevPosition + 200);
+  };
+
+  const scrollRight = () => {
+    setScrollPosition((prevPosition) => prevPosition - 200);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -34,25 +42,13 @@ const Home = () => {
     id: house.id || index,
   }));
 
-  const scrollLeft = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft -= 100;
-    }
-  };
-
-  const scrollRight = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft += 100;
-    }
-  };
-
   return (
     <div className="home-page">
-      <h1>Welcome To House Reservations</h1>
+      <p className="welcome-msg">W E L C O ME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H O U S E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R E S E R V A T I O N S</p>
       <button type="button" className="scroll-btn scroll-left" onClick={scrollLeft}>
-        &lt;
+        &#9665;
       </button>
-      <div className="house-list" ref={containerRef}>
+      <div className="house-list" style={{ overflowX: 'auto', whiteSpace: 'nowrap', marginLeft: `${scrollPosition}px` }}>
         {simplifiedHouses.map((house) => (
           <div className="house-card" key={house.id}>
             <div className="circular-container">
@@ -60,11 +56,16 @@ const Home = () => {
             </div>
             <p className="house-name">{house.house_name}</p>
             <button type="button" className="details-button">See Details</button>
+            <div className="social-group">
+              <span className="social-icon"><i className="fa-brands fa-x-twitter" /></span>
+              <span className="social-icon"><i className="fa-brands fa-linkedin-in" /></span>
+              <span className="social-icon"><i className="fa-brands fa-github" /></span>
+            </div>
           </div>
         ))}
       </div>
       <button type="button" className="scroll-btn scroll-right" onClick={scrollRight}>
-        &gt;
+        &#9655;
       </button>
     </div>
   );
