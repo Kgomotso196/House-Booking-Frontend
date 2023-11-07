@@ -9,6 +9,7 @@ import Reservations from './components/Reservations';
 import Home from './components/Home/Home';
 import store from './redux/store';
 import './App.css';
+import HouseDetails from './components/HouseDetails/HouseDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add-house" element={<AddHouse />} />
+          <Route path="/house-details" element={<HouseDetails />} />
           <Route path="/delete-house" element={<DeleteHouse />} />
           <Route path="/add-reservation" element={<AddReservation />} />
           <Route path="/reservations" element={<Reservations />} />
