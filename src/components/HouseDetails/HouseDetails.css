@@ -2,9 +2,36 @@
   margin-left: 17%;
   display: flex;
   justify-content: space-between;
+  height: 90vh;
 }
 
 img {
-  height: 20%;
-  width: 20%;
+  margin-top: 10%;
+  height: 70%;
+  width: 50%;
+  padding-left: 7%;
+}
+
+.details {
+  margin-top: 5%;
+}
+
+.reserve {
+  background-color: #97c00f;
+  border: none;
+  padding: 2% 10% 2% 5%;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 7%;
+}
+
+.icon {
+  border: 2px solid red;
+}
+.others{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
