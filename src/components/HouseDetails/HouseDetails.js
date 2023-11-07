@@ -24,9 +24,9 @@ const HouseDetails = () => (
 
       </Table>
 
-      <div>
+      {/* <div>
         <button type="button" className="reserve" onClick={console.log('reserve')}>Reserve</button>
-      </div>
+      </div> */}
     </div>
   </div>
 );
