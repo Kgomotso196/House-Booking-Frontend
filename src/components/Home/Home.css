@@ -111,3 +111,19 @@
   padding: 5px 10px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .house-list {
+    left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .welcome-msg {
+    font-size: 16px;
+  }
+
+  .house-card {
+    margin: 100px 50px;
+  }
+}

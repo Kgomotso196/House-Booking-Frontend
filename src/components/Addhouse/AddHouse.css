@@ -1,7 +1,7 @@
 .add-house {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 90%;
   margin: auto;
   justify-items: center;
   align-items: center;
@@ -24,13 +24,25 @@
 
 .form-label {
   color: #000;
+  margin-bottom: 5px;
 }
 
 .error-message {
   color: red;
+  font-size: 14px;
 }
 
 .input-error {
   border: 2px solid red;
   box-shadow: 0 0 5px red;
+}
+
+@media (max-width: 576px) {
+  .add-house {
+    width: 100%;
+  }
+
+  .add-house-form {
+    width: 100%;
+  }
 }
