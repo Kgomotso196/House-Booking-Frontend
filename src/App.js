@@ -6,6 +6,7 @@ import AddHouse from './components/Addhouse/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
+import HouseDetails from './components/HouseDetails/HouseDetails';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <NavMenu />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/house-details" element={<HouseDetails />} />
         <Route path="/add-house" element={<AddHouse />} />
         <Route path="/delete-house" element={<DeleteHouse />} />
         <Route path="/add-reservation" element={<AddReservation />} />
