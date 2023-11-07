@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import NavMenu from './components/NavMenu/NavMenu';
 import AddHouse from './components/Addhouse/AddHouse';
-import DeleteHouse from './components/DeleteHouse';
+// import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
 import Home from './components/Home/Home';
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/add-house" element={<AddHouse />} />
           <Route path="/house-details" element={<HouseDetails />} />
-          <Route path="/delete-house" element={<DeleteHouse />} />
+          <Route path="/delete-house" element={<HouseDetails />} />
           <Route path="/add-reservation" element={<AddReservation />} />
           <Route path="/reservations" element={<Reservations />} />
         </Routes>
