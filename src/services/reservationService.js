@@ -14,4 +14,35 @@ const fetchReservations = createAsyncThunk(
   },
 );
 
-export default fetchReservations;
+const addReservation = createAsyncThunk(
+  'reservations/addReservation',
+  async (reservationData, thunkAPI) => {
+    try {
+      const response = await axios.post(`${baseUrl}/api/v1/reservations`, reservationData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
+const deleteReservation = createAsyncThunk(
+  'reservation/deleteReservation',
+  async ({ studioId, reservationId }, thunkAPI) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/api/v1/studios/${studioId}/reservations/${reservationId}`,
+        {
+          // headers: {
+          //   authorization: thunkAPI.getState().auth.token,
+          // },
+        });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  },
+);
+
+const reservationServiceAPI = { fetchReservations, addReservation, deleteReservation };
+
+export default reservationServiceAPI;
