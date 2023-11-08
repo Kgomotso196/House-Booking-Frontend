@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import houseServiceAPI from '../../services/housesService';
 import './DeleteHouse.css';
 
 const DeleteHouse = () => {
