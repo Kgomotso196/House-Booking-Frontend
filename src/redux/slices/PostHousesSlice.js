@@ -1,17 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { baseUrl } from '../../helpers/helpers';
+import { baseUrl, getLocalStorage } from '../../helpers/helpers';
 
 export const addHouse = createAsyncThunk(
   'houses/addHouse',
   async (houseData, thunkAPI) => {
     try {
+      const userToken = getLocalStorage();
       // Convert the houseData to a JSON string
-      const jsonData = JSON.stringify(houseData);
-
-      const response = await axios.post(`${baseUrl}/api/v1/houses`, jsonData, {
+      // const jsonData = JSON.stringify(houseData);
+      console.log(houseData);
+      const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData, {
         headers: {
-          'Content-Type': 'application/json', // Set the Content-Type header
+          Authorization: `Bearer ${userToken}`,
         },
       });
 
