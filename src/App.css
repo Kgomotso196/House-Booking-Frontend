@@ -5,3 +5,10 @@
 .content {
   flex-grow: 1;
 }
+
+@media only screen and (max-width: 600px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

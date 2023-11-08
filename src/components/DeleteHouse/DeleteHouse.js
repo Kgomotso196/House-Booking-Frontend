@@ -1,35 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// import { Link } from 'react-router-dom';
+import houseServiceAPI from '../../services/housesService';
 import './DeleteHouse.css';
 
 const DeleteHouse = () => {
-  const [houseId, setHouseId] = useState('');
+  const dispatch = useDispatch();
+  const houses = useSelector((state) => state.houses.houses);
+  console.log(houses);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(`http://3001/api/v1/houses/${houseId}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        // Handling error
-      }
-    } catch (error) {
-      // Handling error
-    }
-  };
+  useEffect(() => {
+    dispatch(houseServiceAPI.fetchHouses());
+  }, [dispatch]);
 
-  const handleChange = (event) => {
-    const { value } = event.target;
-    setHouseId(value);
+  const handleDelete = (houseId) => {
+    dispatch(houseServiceAPI.deleteHouse(houseId));
   };
 
   return (
-    <div className="delete-house">
-      <h1 className="del-text">DELETE&nbsp;&nbsp;A&nbsp;&nbsp;HOUSE</h1>
-      <form onSubmit={handleSubmit}>
-        <input className="form-txt" type="text" value={houseId} onChange={handleChange} placeholder="Type House ID" />
-        <button type="submit" className="del-btn">DELETE HOUSE</button>
-      </form>
+    <div className="deleteHouseContainer">
+      <div className="headingContainer">
+        <h1 className="del-text">DELETE&nbsp;&nbsp;A&nbsp;&nbsp;HOUSE</h1>
+      </div>
+      <div className="deleteHouseWrapper">
+        {houses.map((house) => (
+          <div className="deleteHouse" key={house.id}>
+            <div>
+              {' '}
+              {house.id}
+            </div>
+            <div>
+              {' '}
+              {house.house_name}
+            </div>
+            <div>
+              {' '}
+              <img src={house.house_image} alt="house" className="houseImage" />
+            </div>
+            <div>
+              {' '}
+              {house.locatation}
+            </div>
+            <button type="button" onClick={() => handleDelete(house.id)}>Delete</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
