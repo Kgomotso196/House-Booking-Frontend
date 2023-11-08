@@ -9,10 +9,10 @@ const RegisterUser = () => {
     name: '',
     email: '',
     password: '',
-    passowrd_confirmation: '',
+    password_confirmation: '',
   });
 
-  const [responce, setResponce] = useState('');
+  const [response, setResponse] = useState('');
 
   const dispatch = useDispatch();
 
@@ -39,15 +39,15 @@ const RegisterUser = () => {
     dispatch(authenticationServiceAPI.registerUser(updatedRegistrationData));
     RegisterData.name = '';
     RegisterData.email = '';
-    RegisterData.passowrd_confirmation = '';
+    RegisterData.password_confirmation = '';
     RegisterData.password = '';
   };
 
   useEffect(() => {
     if (CurrentUser !== null) {
-      setResponce('Thank You for registering. Proceed to log in');
+      setResponse('Thank You for registering. Proceed to log in');
     } else {
-      setResponce('Enter you name, Email and password to login');
+      setResponse('Enter you name, Email and password to login');
     }
   }, [CurrentUser]);
   return (
@@ -61,7 +61,7 @@ const RegisterUser = () => {
             {' '}
             <h4><Link to="/login">Login here</Link></h4>
           </div>
-          {responce && <div className=" ">{responce}</div>}
+          {response && <div className=" ">{response}</div>}
           <label htmlFor="UserName" className="">
             Enter Name
             <input
@@ -102,7 +102,7 @@ const RegisterUser = () => {
             Confirm
             <input
               type="password"
-              name="passowrd_confirmation"
+              name="password_confirmation"
               value={RegisterData.passowrd_confirmation}
               onChange={handleChange}
               id="UserPasswordConfirmation"
