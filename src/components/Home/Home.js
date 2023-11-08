@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import houseServiceAPI from '../../services/housesService';
+import HouseDetails from '../HouseDetails/HouseDetails';
 import './Home.css';
 
 const Home = () => {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.houses.houses);
+  const [selectedHouse, setSelectedHouse] = useState(null);
   const isLoading = useSelector((state) => state.houses.isLoading);
   const error = useSelector((state) => state.houses.error);
 
@@ -16,11 +19,21 @@ const Home = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const scrollLeft = () => {
-    setScrollPosition((prevPosition) => prevPosition + 200);
+    if (scrollPosition < 0) {
+      setScrollPosition((prevPosition) => prevPosition + 300);
+    }
   };
+  const simplifiedHouses = houses.map((house, index) => ({
+    house_name: house.house_name,
+    house_image: house.house_image,
+    id: house.id || index,
+  }));
 
   const scrollRight = () => {
-    setScrollPosition((prevPosition) => prevPosition - 200);
+    const maxScroll = (simplifiedHouses.length) * 200;
+    if (scrollPosition > -maxScroll) {
+      setScrollPosition((prevPosition) => prevPosition - 300);
+    }
   };
 
   if (isLoading) {
@@ -36,11 +49,9 @@ const Home = () => {
     );
   }
 
-  const simplifiedHouses = houses.map((house, index) => ({
-    house_name: house.house_name,
-    house_image: house.house_image,
-    id: house.id || index,
-  }));
+  const handleSeeDetails = (house) => {
+    setSelectedHouse(house);
+  };
 
   return (
     <div className="home-page">
@@ -55,7 +66,9 @@ const Home = () => {
               <img src={house.house_image} alt={house.house_name} />
             </div>
             <p className="house-name">{house.house_name}</p>
-            <button type="button" className="details-button">See Details</button>
+            <Link to={`/house-details/${house.id}`}>
+              <button type="button" className="details-button" onClick={() => handleSeeDetails(house)}>See Details</button>
+            </Link>
             <div className="social-group">
               <span className="social-icon"><i className="fa-brands fa-x-twitter" /></span>
               <span className="social-icon"><i className="fa-brands fa-linkedin-in" /></span>
@@ -67,6 +80,7 @@ const Home = () => {
       <button type="button" className="scroll-btn scroll-right" onClick={scrollRight}>
         &#9655;
       </button>
+      {selectedHouse && <HouseDetails house={selectedHouse} />}
     </div>
   );
 };

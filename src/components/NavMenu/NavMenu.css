@@ -49,4 +49,15 @@ nav ul a:hover {
 
 .nav-items {
   color: #000;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    margin-bottom: 30px;
+  }
+
+  .nav-items {
+    padding: 5px;
+  }
 }
