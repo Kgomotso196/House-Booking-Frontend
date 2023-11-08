@@ -121,6 +121,9 @@
   .scroll-btn{
     display:none;
   }
+  .welcome-msg{
+    text-align: center;
+  }
 }
 
 @media (max-width: 576px) {
