@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
 import './AddHouse.css';
 
@@ -17,6 +17,8 @@ const AddHouse = () => {
   const [validationErrors, setValidationErrors] = useState({
     image: '',
   });
+
+  const currentUser = useSelector((state) => state.authentication.user);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +53,7 @@ const AddHouse = () => {
           house_image: houseData.image,
           location: houseData.location,
           description: houseData.description,
-          user_id: 1, // Include the user_id here
+          user_id: currentUser.id, // Include the user_id here
         };
         try {
           dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
