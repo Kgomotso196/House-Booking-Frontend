@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './Registeruser.css';
@@ -20,12 +21,11 @@ const RegisterUser = () => {
     setRegisterData({ ...RegisterData, [name]: value });
   };
 
-  const user = useSelector((state) => state.authentication.user);
-  console.log(user);
-
-  useEffect(() => {
-    dispatch(authenticationServiceAPI.checkLogInStatus());
-  }, [dispatch]);
+  const CurrentUser = useSelector((state) => state.authentication.registrationData);
+  console.log(CurrentUser);
+  // useEffect(() => {
+  //   dispatch(authenticationServiceAPI.checkLogInStatus());
+  // }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,19 +36,31 @@ const RegisterUser = () => {
       password_confirmation: RegisterData.passowrd_confirmation,
     };
 
-    setResponce('its successful');
     dispatch(authenticationServiceAPI.registerUser(updatedRegistrationData));
     RegisterData.name = '';
     RegisterData.email = '';
     RegisterData.passowrd_confirmation = '';
     RegisterData.password = '';
   };
+
+  useEffect(() => {
+    if (CurrentUser !== null) {
+      setResponce('Thank You for registering. Proceed to log in');
+    } else {
+      setResponce('Enter you name, Email and password to login');
+    }
+  }, [CurrentUser]);
   return (
     <section className="registerSection">
       <div className="registerSubSection">
         {' '}
         <form className="registerForm" onSubmit={handleSubmit}>
-          <h1>Register Here</h1>
+          <div>
+            {' '}
+            <h3>Register Here</h3>
+            {' '}
+            <h4><Link to="/login">Login here</Link></h4>
+          </div>
           {responce && <div className=" ">{responce}</div>}
           <label htmlFor="UserName" className="">
             Enter Name

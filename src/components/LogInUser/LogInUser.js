@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './LogInUser.css';
@@ -9,10 +10,8 @@ const LogInUser = () => {
     password: '',
   });
 
-  const [error, setError] = useState('');
-  console.log(error);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +24,8 @@ const LogInUser = () => {
       name: LogInData.name,
       password: LogInData.password,
     };
-    setError('its successful');
     dispatch(authenticationServiceAPI.signInUser(updatedLogInData));
+    navigate('/');
   };
 
   return (
@@ -34,7 +33,12 @@ const LogInUser = () => {
       <div className="logInSubSection">
         {' '}
         <form className="LogInForm" onSubmit={handleSubmit}>
-          <h1>Login Here</h1>
+          <div>
+            {' '}
+            <h2>Login page</h2>
+            {' '}
+            <button type="button"><Link to="/register">Register here</Link></button>
+          </div>
           <label htmlFor="name" className="">
             User Name
             <input
