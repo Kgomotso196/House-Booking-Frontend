@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import reservationServiceAPI from '../services/reservationService';
 
 const Reservations = () => {
-  const [reservations, setReservations] = useState([]);
+  const dispatch = useDispatch();
+  const { reservations } = useSelector((state) => state.reservations);
 
   useEffect(() => {
-    const fetchReservations = async () => {
-      try {
-        const response = await fetch('http://3001/api/v1/reservations');
-        const data = await response.json();
-        setReservations(data);
-      } catch (error) {
-        // Handling error
-      }
-    };
-
-    fetchReservations();
-  }, []);
+    if (!reservations.length) {
+      dispatch(reservationServiceAPI.fetchReservations());
+    }
+  }, [dispatch, reservations.length]);
 
   return (
     <div>
-      <h1>Reservations</h1>
+      <h1>Reservations are  here</h1>
       <ul>
         {reservations.map((reservation) => (
           <li key={reservation.id}>
-            {/* Reservation details will show here */}
+            <p>{reservation.house_price}</p>
+            <p>{reservation.city}</p>
+            <p>{reservation.checking_date}</p>
           </li>
         ))}
       </ul>
