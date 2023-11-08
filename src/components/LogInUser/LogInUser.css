@@ -1,29 +1,29 @@
 .logInSection {
-    height: 100vh;
+  height: 100vh;
 }
 
 .logInSubSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .LogInForm {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .submitContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .registerSubmit {
-    border: 1px solid black;
-    background-color: unset;
-    border-radius: 1rem;
-    padding: 1% 10%;
+  border: 1px solid black;
+  background-color: unset;
+  border-radius: 1rem;
+  padding: 1% 10%;
 }

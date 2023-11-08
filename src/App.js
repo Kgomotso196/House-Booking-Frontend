@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, Provider } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+
 import NavMenu from './components/NavMenu/NavMenu';
 import AddHouse from './components/Addhouse/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
-import HouseDetails from './components/HouseDetails/HouseDetails';
+// import HouseDetails from './components/HouseDetails/HouseDetails';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import RegisterUser from './components/RegisterUser/RegisterUser';
 import LogInUser from './components/LogInUser/LogInUser';
