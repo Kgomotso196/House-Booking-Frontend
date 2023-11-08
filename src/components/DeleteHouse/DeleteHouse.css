@@ -1,0 +1,32 @@
+.delete-house {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.delete-house form {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+.form-txt {
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.del-text {
+  font-weight: 500;
+}
+
+.del-btn {
+  background-color: #97bf0f;
+  border-radius: 10px;
+  width: 130px;
+  height: 35px;
+  color: #fff;
+}
