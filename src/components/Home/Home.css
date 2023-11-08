@@ -118,10 +118,12 @@
     display: flex;
     flex-direction: column;
   }
-  .scroll-btn{
-    display:none;
+
+  .scroll-btn {
+    display: none;
   }
-  .welcome-msg{
+
+  .welcome-msg {
     text-align: center;
   }
 }
