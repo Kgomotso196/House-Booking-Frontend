@@ -55,7 +55,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <p className="welcome-msg">W E L C O ME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H O U S E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R E S E R V A T I O N S</p>
+      <p className="welcome-msg">WELCOME TO BOOK HOUSE</p>
       <button type="button" className="scroll-btn scroll-left" onClick={scrollLeft}>
         &#9665;
       </button>
