@@ -1,32 +1,32 @@
-.delete-house {
+.headingContainer {
   display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: auto;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 }
 
-.delete-house form {
-  margin-top: 10px;
-  padding-right: 10px;
+/* .deleteHouseContainer {
+
+} */
+
+.deleteHouseWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.form-txt {
-  width: 180px;
-  height: 40px;
-  border-radius: 5px;
-  margin-right: 5px;
+.deleteHouse {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 5rem;
+  background-color: beige;
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
 
-.del-text {
-  font-weight: 500;
-}
-
-.del-btn {
-  background-color: #97bf0f;
-  border-radius: 10px;
-  width: 130px;
-  height: 35px;
-  color: #fff;
+.houseImage {
+  width: 10rem;
 }

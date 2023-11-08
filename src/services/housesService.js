@@ -41,7 +41,10 @@ const addHouse = createAsyncThunk(
 const deleteHouse = createAsyncThunk(
   'houses/deleteHouse',
   async (houseId, thunkAPI) => {
+    console.log("I'm getting to services one");
     try {
+      console.log(houseId);
+      console.log("I'm getting to services");
       const response = await axios.delete(
         `${baseUrl}/api/v1/houses/${houseId}`, {
           headers: {
