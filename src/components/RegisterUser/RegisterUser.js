@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './Registeruser.css';
 
 const RegisterUser = () => {
+  const navigate = useNavigate();
   const [RegisterData, setRegisterData] = useState({
     name: '',
     email: '',
@@ -22,10 +23,6 @@ const RegisterUser = () => {
   };
 
   const CurrentUser = useSelector((state) => state.authentication.registrationData);
-  console.log(CurrentUser);
-  // useEffect(() => {
-  //   dispatch(authenticationServiceAPI.checkLogInStatus());
-  // }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +38,7 @@ const RegisterUser = () => {
     RegisterData.email = '';
     RegisterData.password_confirmation = '';
     RegisterData.password = '';
+    navigate('/login');
   };
 
   useEffect(() => {

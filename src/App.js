@@ -30,7 +30,7 @@ function App() {
       <>
         {user ? (
           <>
-            <NavMenu classname="nav"/>
+            <NavMenu classname="nav" />
             <Routes>
               <Route path="/" element={<Outlet />}>
                 <Route index element={<Home />} />

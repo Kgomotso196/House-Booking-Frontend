@@ -7,7 +7,6 @@ import './DeleteHouse.css';
 const DeleteHouse = () => {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.houses.houses);
-  console.log(houses);
 
   useEffect(() => {
     dispatch(houseServiceAPI.fetchHouses());

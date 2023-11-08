@@ -6,9 +6,8 @@ const registerUser = createAsyncThunk(
   'user/register',
   async (userData, thunkAPI) => {
     try {
-      console.log(userData);
       const response = await axios.post(`${baseUrl}/api/v1/users`, userData);
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
@@ -20,9 +19,8 @@ const signInUser = createAsyncThunk(
   'user/signin',
   async (logInData, thunkAPI) => {
     try {
-      console.log(logInData);
       const response = await axios.post(`${baseUrl}/api/v1/login`, logInData);
-      console.log(response.data);
+
       setLocalStorage(response.data.jwt);
       return response.data;
     } catch (error) {

@@ -29,7 +29,6 @@ const authSlice = createSlice({
       .addCase(authenticationServiceAPI.registerUser.fulfilled, (state, action) => {
         state.registrationLoading = false;
         state.registrationData = action.payload;
-        state.user = action.payload.user;
         state.registrationError = null;
       })
       .addCase(authenticationServiceAPI.registerUser.rejected, (state, action) => {

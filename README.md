@@ -134,7 +134,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 🤑 **Tonny Tei**
 
-- GitHub: [@AbbasSarwar](https://github.com/tonnytech)
+- GitHub: [Tonny](https://github.com/tonnytech)
 
 # 🔭 Future Features <a name="future-features"></a>
 
