@@ -21,6 +21,7 @@ const Reservations = () => {
             <p>{reservation.house_price}</p>
             <p>{reservation.city}</p>
             <p>{reservation.checking_date}</p>
+            <p>{reservation.house.house_name}</p>
           </li>
         ))}
       </ul>
