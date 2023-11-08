@@ -10,4 +10,5 @@ export const getLocalStorage = () => {
 
 export const setLocalStorage = (token) => {
   localStorage.setItem('user', JSON.stringify(token));
+
 };
