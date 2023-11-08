@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import houseServiceAPI from '../../services/housesService';
+import './DeleteHouse.css';
 
 const DeleteHouse = () => {
   const [houseId, setHouseId] = useState('');
@@ -23,11 +25,11 @@ const DeleteHouse = () => {
   };
 
   return (
-    <div>
-      <h1>Delete House</h1>
+    <div className="delete-house">
+      <h1 className="del-text">DELETE&nbsp;&nbsp;A&nbsp;&nbsp;HOUSE</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={houseId} onChange={handleChange} placeholder="House ID" />
-        <button type="submit">Delete House</button>
+        <input className="form-txt" type="text" value={houseId} onChange={handleChange} placeholder="Type House ID" />
+        <button type="submit" className="del-btn">DELETE HOUSE</button>
       </form>
     </div>
   );

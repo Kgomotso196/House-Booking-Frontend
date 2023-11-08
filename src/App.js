@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import NavMenu from './components/NavMenu/NavMenu';
 import AddHouse from './components/Addhouse/AddHouse';
-import DeleteHouse from './components/DeleteHouse';
+import DeleteHouse from './components/DeleteHouse/DeleteHouse';
 import AddReservation from './components/AddReservation';
 import Reservations from './components/Reservations';
 import Home from './components/Home/Home';

@@ -1,8 +1,9 @@
 .add-house {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 80%;
   margin: auto;
+  margin-left: 300px;
   justify-items: center;
   align-items: center;
 }
