@@ -9,7 +9,6 @@ const initialState = {
   signInData: null,
   signInError: null,
   user: null,
-  logged_in: false,
 };
 
 const authSlice = createSlice({
@@ -29,7 +28,7 @@ const authSlice = createSlice({
       .addCase(authenticationServiceAPI.registerUser.fulfilled, (state, action) => {
         state.registrationLoading = false;
         state.registrationData = action.payload;
-        state.user = action;
+        state.user = action.payload.user;
         state.registrationError = null;
       })
       .addCase(authenticationServiceAPI.registerUser.rejected, (state, action) => {
@@ -50,6 +49,23 @@ const authSlice = createSlice({
         state.signInError = null;
       })
       .addCase(authenticationServiceAPI.signInUser.rejected, (state, action) => {
+        state.signInLoading = false;
+        state.signInData = null;
+        state.signInError = action.payload;
+      });
+
+    builder
+      .addCase(authenticationServiceAPI.checkLogInStatus.pending, (state) => {
+        state.signInLoading = true;
+        state.signInError = null;
+      })
+      .addCase(authenticationServiceAPI.checkLogInStatus.fulfilled, (state, action) => {
+        state.signInLoading = false;
+        state.signInData = action.payload;
+        state.user = action.payload;
+        state.signInError = null;
+      })
+      .addCase(authenticationServiceAPI.checkLogInStatus.rejected, (state, action) => {
         state.signInLoading = false;
         state.signInData = null;
         state.signInError = action.payload;

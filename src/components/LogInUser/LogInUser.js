@@ -5,7 +5,7 @@ import './LogInUser.css';
 
 const LogInUser = () => {
   const [LogInData, setLogInData] = useState({
-    email: '',
+    name: '',
     password: '',
   });
 
@@ -22,13 +22,10 @@ const LogInUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedLogInData = {
-      user: {
-        email: LogInData.email,
-        password: LogInData.password,
-      },
+      name: LogInData.name,
+      password: LogInData.password,
     };
     setError('its successful');
-    console.log(updatedLogInData);
     dispatch(authenticationServiceAPI.signInUser(updatedLogInData));
   };
 
@@ -38,16 +35,16 @@ const LogInUser = () => {
         {' '}
         <form className="LogInForm" onSubmit={handleSubmit}>
           <h1>Login Here</h1>
-          <label htmlFor="UserEmail" className="">
-            User Email
+          <label htmlFor="name" className="">
+            User Name
             <input
-              type="email"
-              name="email"
-              value={LogInData.email}
+              type="text"
+              name="name"
+              value={LogInData.name}
               onChange={handleChange}
               id="UserEmail"
               className=""
-              placeholder="Enter Your Email"
+              placeholder="Enter Your Name"
             />
           </label>
 

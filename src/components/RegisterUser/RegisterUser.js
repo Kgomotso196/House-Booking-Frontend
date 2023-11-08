@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './Registeruser.css';
 
@@ -11,7 +11,7 @@ const RegisterUser = () => {
     passowrd_confirmation: '',
   });
 
-  const [error, setError] = useState('');
+  const [responce, setResponce] = useState('');
 
   const dispatch = useDispatch();
 
@@ -20,18 +20,28 @@ const RegisterUser = () => {
     setRegisterData({ ...RegisterData, [name]: value });
   };
 
+  const user = useSelector((state) => state.authentication.user);
+  console.log(user);
+
+  useEffect(() => {
+    dispatch(authenticationServiceAPI.checkLogInStatus());
+  }, [dispatch]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedRegistrationData = {
-      user: {
-        name: RegisterData.name,
-        email: RegisterData.email,
-        password: RegisterData.password,
-        password_confirmation: RegisterData.passowdConfirmation,
-      },
+      name: RegisterData.name,
+      email: RegisterData.email,
+      password: RegisterData.password,
+      password_confirmation: RegisterData.passowrd_confirmation,
     };
-    setError('its successful');
+
+    setResponce('its successful');
     dispatch(authenticationServiceAPI.registerUser(updatedRegistrationData));
+    RegisterData.name = '';
+    RegisterData.email = '';
+    RegisterData.passowrd_confirmation = '';
+    RegisterData.password = '';
   };
   return (
     <section className="registerSection">
@@ -39,7 +49,7 @@ const RegisterUser = () => {
         {' '}
         <form className="registerForm" onSubmit={handleSubmit}>
           <h1>Register Here</h1>
-          {error && <div className=" ">{error}</div>}
+          {responce && <div className=" ">{responce}</div>}
           <label htmlFor="UserName" className="">
             Enter Name
             <input

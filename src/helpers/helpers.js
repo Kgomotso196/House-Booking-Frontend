@@ -1,10 +1,13 @@
 export const baseUrl = 'http://127.0.0.1:3000';
 
-export const getLocalStorate = () => {
-  console.log('Get the local storage');
+export const getLocalStorage = () => {
+  const userToken = localStorage.getItem('user');
+  if (userToken) {
+    return JSON.parse(userToken);
+  }
+  return null;
 };
 
-export const setLocalStorage = (user) => {
-  console.log(user);
-  localStorage.setItem('user', JSON.stringify(user));
+export const setLocalStorage = (token) => {
+  localStorage.setItem('user', JSON.stringify(token));
 };
