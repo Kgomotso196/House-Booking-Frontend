@@ -1,6 +1,5 @@
-import React from 'react';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
 // import Home from './components/Home';
@@ -12,16 +11,16 @@ import HouseDetails from './components/HouseDetails/HouseDetails';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import RegisterUser from './components/RegisterUser/RegisterUser';
 import LogInUser from './components/LogInUser/LogInUser';
-// import authenticationServiceAPI from './services/authenticationService';
+import authenticationServiceAPI from './services/authenticationService';
 
 function App() {
-  // const value = useSelector((state) => state.authentication.user);
-  // console.log(value);
-  // const dispatch = useDispatch();
+  const value = useSelector((state) => state.authentication.user);
+  console.log(value);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(authenticationServiceAPI.checkLogInStatus());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(authenticationServiceAPI.checkLogInStatus());
+  }, [dispatch]);
 
   return (
     <>
