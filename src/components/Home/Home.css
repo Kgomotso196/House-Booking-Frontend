@@ -115,6 +115,11 @@
 @media (max-width: 768px) {
   .house-list {
     left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .scroll-btn{
+    display:none;
   }
 }
 
