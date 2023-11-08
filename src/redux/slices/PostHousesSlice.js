@@ -7,9 +7,7 @@ export const addHouse = createAsyncThunk(
   async (houseData, thunkAPI) => {
     try {
       const userToken = getLocalStorage();
-      // Convert the houseData to a JSON string
-      // const jsonData = JSON.stringify(houseData);
-      console.log(houseData);
+
       const response = await axios.post(`${baseUrl}/api/v1/houses`, houseData, {
         headers: {
           Authorization: `Bearer ${userToken}`,

@@ -9,14 +9,15 @@ const initialState = {
   signInData: null,
   signInError: null,
   user: null,
+  loggedIn: null,
 };
 
 const authSlice = createSlice({
   name: 'registration',
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
+    setLoggedIn: (state, action) => {
+      state.loggedIn = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -28,7 +29,6 @@ const authSlice = createSlice({
       .addCase(authenticationServiceAPI.registerUser.fulfilled, (state, action) => {
         state.registrationLoading = false;
         state.registrationData = action.payload;
-        state.user = action.payload.user;
         state.registrationError = null;
       })
       .addCase(authenticationServiceAPI.registerUser.rejected, (state, action) => {
@@ -73,6 +73,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setLoggedIn } = authSlice.actions;
 
 export default authSlice.reducer;

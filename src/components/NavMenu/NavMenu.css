@@ -52,12 +52,6 @@ nav ul a:hover {
   padding: 10px;
 }
 
-.hamburger {
-  border: 2px solid blue;
-
-  /* NavMenu.css */
-}
-
 @media (max-width: 768px) {
   .nav-logo {
     margin-bottom: 30px;

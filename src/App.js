@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, Provider } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
-
+import {
+  Routes, Route, Outlet, Link,
+} from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
 import AddHouse from './components/Addhouse/AddHouse';
 import DeleteHouse from './components/DeleteHouse/DeleteHouse';
@@ -17,8 +18,7 @@ import './App.css';
 import HouseDetails from './components/HouseDetails/HouseDetails';
 
 function App() {
-  const value = useSelector((state) => state.authentication.user);
-  console.log(value);
+  const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,18 +28,39 @@ function App() {
   return (
     <Provider store={store}>
       <>
-        <NavMenu classname="nav" />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add-house" element={<AddHouse />} />
-          <Route path="/house-details/:id" element={<HouseDetails />} />
-          <Route path="/delete-house" element={<DeleteHouse />} />
-          <Route path="/add-reservation" element={<AddReservation />} />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route path="/spash" element={<SplashScreen />} />
-          <Route path="/register" element={<RegisterUser />} />
-          <Route path="/login" element={<LogInUser />} />
-        </Routes>
+        {user ? (
+          <>
+            <NavMenu classname="nav" />
+            <Routes>
+              <Route path="/" element={<Outlet />}>
+                <Route index element={<Home />} />
+                <Route path="add-house" element={<AddHouse />} />
+                <Route path="house-details/:id" element={<HouseDetails />} />
+                <Route path="delete-house" element={<DeleteHouse />} />
+                <Route path="add-reservation" element={<AddReservation />} />
+                <Route path="reservations" element={<Reservations />} />
+              </Route>
+            </Routes>
+          </>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Outlet />}>
+              <Route index element={<SplashScreen />} />
+              <Route path="register" element={<RegisterUser />} />
+              <Route
+                path="login"
+                element={(
+                  <>
+                    <LogInUser />
+                    <div>
+                      <Link to="/register">Register here</Link>
+                    </div>
+                  </>
+                )}
+              />
+            </Route>
+          </Routes>
+        )}
       </>
     </Provider>
   );
