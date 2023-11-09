@@ -6,6 +6,7 @@ import houseServiceAPI from '../services/housesService';
 
 const AddReservation = () => {
   const { houses } = useSelector((state) => state.houses);
+  const currentUser = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,8 +15,8 @@ const AddReservation = () => {
   }, [dispatch]);
 
   const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
+    checking_date: '',
+    checkout_date: '',
     city: '',
     house_price: '',
     house: '',
@@ -36,7 +37,7 @@ const AddReservation = () => {
       checking_date: formData.checking_date,
       checkout_date: formData.checkout_date,
       city: formData.city,
-      user_id: 1, // Include the user_id here
+      user_id: currentUser.id, // Include the user_id here
       house_id: formData.house,
       house_price: formData.house_price,
 

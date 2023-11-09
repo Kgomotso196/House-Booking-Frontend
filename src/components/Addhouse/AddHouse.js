@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
 import './AddHouse.css';
 
 const AddHouse = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [houseData, setHouseData] = useState({
     name: '',
@@ -12,25 +14,19 @@ const AddHouse = () => {
     location: '',
     description: '',
   });
-
   // Add a state to track validation errors
   const [validationErrors, setValidationErrors] = useState({
     image: '',
   });
-
   const currentUser = useSelector((state) => state.authentication.user);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setHouseData({ ...houseData, [name]: value });
-
     // Reset the validation error when the user makes changes
     setValidationErrors({ ...validationErrors, [name]: '' });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Check if any of the form fields are empty
     if (
       !houseData.name
@@ -45,7 +41,7 @@ const AddHouse = () => {
       const urlRegex = /^(http|https):\/\/[^\s/$.?#].[^\s]*$/;
       if (!urlRegex.test(houseData.image)) {
         // If the image URL is not in the correct format, set an error message
-        setValidationErrors({ ...validationErrors, image: '🛑 INVALID URL ' });
+        setValidationErrors({ ...validationErrors, image: ':octagonal_sign: INVALID URL ' });
       } else {
         // Image URL is valid, proceed to dispatch the action
         const updatedHouseData = {
@@ -58,12 +54,12 @@ const AddHouse = () => {
         try {
           dispatch(addHouse(updatedHouseData)); // Use updatedHouseData here
         } catch (error) {
-          setError('OPPS 😬 Something went wrong', error);
+          setError('OPPS :grimacing: Something went wrong', error);
         }
       }
+      navigate('/');
     }
   };
-
   return (
     <div className="add-house">
       {error && <div className="alert alert-danger">{error}</div>}
@@ -128,5 +124,4 @@ const AddHouse = () => {
     </div>
   );
 };
-
 export default AddHouse;
