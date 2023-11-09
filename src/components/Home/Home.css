@@ -26,3 +26,121 @@
   margin: 150px 100px;
   text-align: center;
 }
+
+.house-card img {
+  position: relative;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.circular-container {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+.circular-container img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.house-name {
+  position: relative;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.social-group {
+  margin-top: 60px;
+  color: #9d9999;
+  border-radius: 50%;
+}
+
+.social-group span {
+  margin: 10px 15px;
+}
+
+.scroll-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-180%);
+  width: 100px;
+  height: 40px;
+  background-color: #97bf11;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: #000;
+  z-index: 5;
+}
+
+.scroll-left {
+  width: 170px;
+  left: 150px;
+  position: fixed;
+  color: #fff;
+  padding-right: 20px;
+  justify-content: right;
+}
+
+.scroll-right {
+  right: -35px;
+  position: fixed;
+  color: #fff;
+  padding-left: 20px;
+  justify-content: left;
+}
+
+.details-button {
+  margin-top: 10px;
+  background-color: #97bf11;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .house-list {
+    left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scroll-btn {
+    display: none;
+  }
+
+  .welcome-msg {
+    position: unset;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .welcome-msg {
+    position: unset;
+    font-size: 16px;
+  }
+
+  .house-card {
+    margin: 100px 50px;
+  }
+}
