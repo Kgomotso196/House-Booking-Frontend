@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import reservationServiceAPI from '../services/reservationService';
 import houseServiceAPI from '../services/housesService';
+import './Reservation.css';
 
 const AddReservation = () => {
   const { houses } = useSelector((state) => state.houses);
@@ -47,7 +48,7 @@ const AddReservation = () => {
   };
 
   return (
-    <div>
+    <div className="reservationCard">
       <h1>Add Reservation</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="checking_date">

@@ -125,12 +125,14 @@
 
   .welcome-msg {
     text-align: center;
+    position: unset;
   }
 }
 
 @media (max-width: 576px) {
   .welcome-msg {
     font-size: 16px;
+    position: unset;
   }
 
   .house-card {

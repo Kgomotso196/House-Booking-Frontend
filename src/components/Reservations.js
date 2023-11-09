@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import reservationServiceAPI from '../services/reservationService';
+import './Reservation.css';
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -13,15 +14,27 @@ const Reservations = () => {
   }, [dispatch, reservations.length]);
 
   return (
-    <div>
-      <h1>Reservations are  here</h1>
-      <ul>
+    <div className="reservationContainer">
+      <div className="headerContainer"><h1>RESERVATIONS</h1></div>
+      <ul className="reservationCard">
         {reservations.map((reservation) => (
-          <li key={reservation.id}>
-            <p>{reservation.house_price}</p>
-            <p>{reservation.city}</p>
-            <p>{reservation.checking_date}</p>
-            <p>{reservation.house.house_name}</p>
+          <li key={reservation.id} className="reservationElement">
+            <div>
+              PRICE:&nbsp;&nbsp;
+              {reservation.house_price}
+            </div>
+            <div>
+              CITY:&nbsp;&nbsp;
+              {reservation.city}
+            </div>
+            <div>
+              CHECKIN:&nbsp;&nbsp;
+              {reservation.checking_date}
+            </div>
+            <div>
+              HOUSE:&nbsp;&nbsp;
+              {reservation.house.house_name}
+            </div>
           </li>
         ))}
       </ul>

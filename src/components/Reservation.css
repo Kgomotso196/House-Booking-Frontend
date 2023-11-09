@@ -1,0 +1,54 @@
+.reservationContainer {
+    
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservationCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.reservationElement {
+    background-color: #97bf11;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #97bf11;
+    gap: 1rem;
+}
+
+.reservationElement div {
+    font-weight: 700;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .reservationElement {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .reservationElement {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+    }
+}
