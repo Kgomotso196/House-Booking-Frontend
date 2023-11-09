@@ -14,8 +14,8 @@ const AddReservation = () => {
   }, [dispatch]);
 
   const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
+    checking_date: '',
+    checkout_date: '',
     city: '',
     house_price: '',
     house: '',
