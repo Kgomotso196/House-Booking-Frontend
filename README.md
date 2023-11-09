@@ -28,6 +28,10 @@
 
 **House Booking** is a web application that offers a diverse selection of luxurious houses. Find your slice of paradise, effortlessly choose your shelter, and make memories that last a lifetime with a house of your choice.
 
+<div align="center">
+  <img src="kanban.png" alt="kanban" width="500"  height="auto" />
+  <br/>
+</div>
 
 # 🛠 Built With <a name="built-with"></a>
 
