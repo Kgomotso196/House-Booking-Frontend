@@ -113,6 +113,11 @@
 }
 
 @media (max-width: 768px) {
+  .home-page {
+    display: flex;
+    flex-direction: column;
+  }
+
   .house-list {
     left: 0;
     display: flex;
@@ -124,6 +129,7 @@
   }
 
   .welcome-msg {
+    position: unset;
     text-align: center;
     position: unset;
   }
@@ -131,6 +137,7 @@
 
 @media (max-width: 576px) {
   .welcome-msg {
+    position: unset;
     font-size: 16px;
     position: unset;
   }
