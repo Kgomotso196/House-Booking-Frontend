@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import reservationServiceAPI from '../services/reservationService';
 import houseServiceAPI from '../services/housesService';
-import './Reservation.css';
+import './AddReservation.css';
 
 const AddReservation = () => {
   const { houses } = useSelector((state) => state.houses);
@@ -51,39 +51,53 @@ const AddReservation = () => {
   return (
     <div className="reservationCard">
       <h1>Add Reservation</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="checking_date">
-          Checking Date:
-          <input type="text" name="checking_date" id="checking_date" value={formData.checking_date} onChange={handleChange} />
-        </label>
-        <label htmlFor="checkout_date">
-          Checkingout Date:
-          <input type="text" name="checkout_date" id="checkout_date" value={formData.checkout_date} onChange={handleChange} />
-        </label>
-        <label htmlFor="city">
-          City:
-          <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} />
-        </label>
-        <label htmlFor="house_price">
-          House Price:
-          <input type="text" id="house_price" name="house_price" value={formData.house_price} onChange={handleChange} />
-        </label>
+      <form onSubmit={handleSubmit} className="resrevationForm">
+        <div>
+          <label htmlFor="checking_date" className="formElement">
+            <div>Checking Date:</div>
+            <input type="text" name="checking_date" id="checking_date" placeholder="dd/mm/yyyy" value={formData.checking_date} onChange={handleChange} className="reservationInput" />
+          </label>
+        </div>
 
-        <label htmlFor="house">
-          <select
-            name="house"
-            value={formData.house}
-            onChange={handleChange}
-          >
-            <option value="">Select a house</option>
-            {notReservedHouses.map((room) => (
-              <option key={room.id} value={room.id}>
-                {room.house_name}
-              </option>
-            ))}
-          </select>
+        <div>
+          <label htmlFor="checkout_date" className="formElement">
+            <div>Checkingout Date:</div>
+            <input type="text" name="checkout_date" id="checkout_date" placeholder="dd/mm/yyyy" value={formData.checkout_date} onChange={handleChange} className="reservationInput" />
+          </label>
+        </div>
 
-        </label>
+        <div>
+          <label htmlFor="city" className="formElement">
+            <div>City:</div>
+            <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} className="reservationInput" />
+          </label>
+        </div>
+
+        <div>
+          <label htmlFor="house_price" className="formElement">
+            <div>House Price:</div>
+            <input type="text" id="house_price" name="house_price" value={formData.house_price} onChange={handleChange} className="reservationInput" />
+          </label>
+        </div>
+
+        <div>
+          <label htmlFor="house" className="formElement">
+            Select House
+            <select
+              name="house"
+              value={formData.house}
+              onChange={handleChange}
+            >
+              <option value="">Select a house</option>
+              {notReservedHouses.map((room) => (
+                <option key={room.id} value={room.id}>
+                  {room.house_name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
         <button type="submit" onClick={handleSubmit}>Add Reservation</button>
       </form>
     </div>

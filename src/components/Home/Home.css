@@ -129,7 +129,6 @@
   }
 
   .welcome-msg {
-    position: unset;
     text-align: center;
     position: unset;
   }
@@ -137,7 +136,6 @@
 
 @media (max-width: 576px) {
   .welcome-msg {
-    position: unset;
     font-size: 16px;
     position: unset;
   }
