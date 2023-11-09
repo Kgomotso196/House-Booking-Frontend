@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test House Component it renders correctly 1`] = `
+<div
+  className="home-page"
+>
+  <p
+    className="welcome-msg"
+  >
+    WELCOME TO BOOK HOUSE
+  </p>
+  <button
+    className="scroll-btn scroll-left"
+    onClick={[Function]}
+    type="button"
+  >
+    ◁
+  </button>
+  <div
+    className="house-list"
+    style={
+      Object {
+        "marginLeft": "0px",
+        "overflowX": "auto",
+        "whiteSpace": "nowrap",
+      }
+    }
+  />
+  <button
+    className="scroll-btn scroll-right"
+    onClick={[Function]}
+    type="button"
+  >
+    ▷
+  </button>
+</div>
+`;

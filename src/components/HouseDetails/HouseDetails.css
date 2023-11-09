@@ -21,8 +21,8 @@
 #house-img-details {
   position: relative;
   border-radius: 50%;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -30,8 +30,8 @@
   position: relative;
   border-radius: 50%;
   overflow: hidden;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   left: 300px;
   top: 150px;
 }
@@ -102,6 +102,11 @@
     width: 100%;
   }
 
+  .details {
+    display: flex;
+    flex-direction: row;
+  }
+
   #circular-container {
     position: relative;
     border-radius: 50%;
@@ -110,5 +115,11 @@
     height: 200px;
     left: 300px;
     top: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  #house-img-details {
+    display: none;
   }
 }
