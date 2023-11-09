@@ -123,3 +123,4 @@ const AddHouse = () => {
     </div>
   );
 };
+export default AddHouse;
