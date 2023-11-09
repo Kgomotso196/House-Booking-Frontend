@@ -72,7 +72,7 @@ const RegisterUser = () => {
             />
           </label>
 
-          <label htmlFor="userEmail" className=" ">
+          <label htmlFor="UserEmail" className=" ">
             User Email
             <input
               type="email"
