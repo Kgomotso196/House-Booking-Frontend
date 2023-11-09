@@ -16,7 +16,7 @@ const NavMenu = () => {
   return (
     <>
       <header className="bg-dark text-light"><i className="fa-solid fa-bars position-fixed" role="button" tabIndex={0} onClick={toggleMenu} onKeyDown={toggleMenu} aria-label="toggle nav" /></header>
-      <p className="d-flex justify-content-start p-2 hamburger"><i className="fa-solid fa-bars" role="button" tabIndex={0} onClick={toggleMenu} onKeyDown={toggleMenu} aria-label="toggle nav" /></p>
+      <p className="d-flex justify-content-start p-2 position-fixed hamburger"><i className="fa-solid fa-bars" role="button" tabIndex={0} onClick={toggleMenu} onKeyDown={toggleMenu} aria-label="toggle nav" /></p>
       <nav className={`col-4 col-md-2 flex-column ${sidebar ? 'open' : ''} position-fixed`} style={{ zIndex: '1000' }}>
         <img className="nav-logo" src={navlogo} width={140} height={40} alt="Navbar logo" />
         <ul className="nav-items d-flex flex-column fs-6 pt-4">
