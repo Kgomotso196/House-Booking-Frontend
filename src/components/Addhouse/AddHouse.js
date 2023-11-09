@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
 import './AddHouse.css';
 
 const AddHouse = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [houseData, setHouseData] = useState({
     name: '',
@@ -61,6 +63,7 @@ const AddHouse = () => {
           setError('OPPS 😬 Something went wrong', error);
         }
       }
+      navigate('/');
     }
   };
 

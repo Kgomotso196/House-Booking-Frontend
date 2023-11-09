@@ -26,11 +26,11 @@ const DeleteHouse = () => {
           <div className="deleteHouse" key={house.id}>
             <div>
               {' '}
-              {house.id}
+              {house.house_name}
             </div>
             <div>
               {' '}
-              {house.house_name}
+              {house.description}
             </div>
             <div>
               {' '}
@@ -38,9 +38,9 @@ const DeleteHouse = () => {
             </div>
             <div>
               {' '}
-              {house.locatation}
+              {house.location}
             </div>
-            <button type="button" onClick={() => handleDelete(house.id)}>Delete</button>
+            <button type="button" className="deleteButton" onClick={() => handleDelete(house.id)}>Delete</button>
           </div>
         ))}
       </div>

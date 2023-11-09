@@ -20,6 +20,7 @@
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
+    "redux-mock-store": "^1.5.4",
     "swiper": "^11.0.3",
     "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
@@ -27,8 +28,14 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!axios)"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -53,14 +60,17 @@
     "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-jsx": "^7.22.5",
-    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.22.15",
+    "babel-jest": "^29.7.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jsdom": "^22.1.0",
+    "react-test-renderer": "^18.2.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
