@@ -2,17 +2,36 @@
 
 exports[`Test House Component it renders correctly 1`] = `
 <div
-  className="reservationContainer"
+  className="home-page"
 >
-  <div
-    className="headerContainer"
+  <p
+    className="welcome-msg"
   >
-    <h1>
-      RESERVATIONS
-    </h1>
-  </div>
-  <ul
-    className="reservationCard"
+    WELCOME TO BOOK HOUSE
+  </p>
+  <button
+    className="scroll-btn scroll-left"
+    onClick={[Function]}
+    type="button"
+  >
+    ◁
+  </button>
+  <div
+    className="house-list"
+    style={
+      Object {
+        "marginLeft": "0px",
+        "overflowX": "auto",
+        "whiteSpace": "nowrap",
+      }
+    }
   />
+  <button
+    className="scroll-btn scroll-right"
+    onClick={[Function]}
+    type="button"
+  >
+    ▷
+  </button>
 </div>
 `;
