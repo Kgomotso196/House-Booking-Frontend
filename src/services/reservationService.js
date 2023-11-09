@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { baseUrl, getLocalStorage } from '../helpers/helpers';
 
-
 const fetchReservations = createAsyncThunk(
   'reservation/fetchReservations',
   async (_, thunkAPI) => {

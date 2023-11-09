@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
 import './AddHouse.css';
+
 const AddHouse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
