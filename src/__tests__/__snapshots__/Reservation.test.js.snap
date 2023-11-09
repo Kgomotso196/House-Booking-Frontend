@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test House Component it renders correctly 1`] = `
+<div
+  className="reservationContainer"
+>
+  <div
+    className="headerContainer"
+  >
+    <h1>
+      RESERVATIONS
+    </h1>
+  </div>
+  <ul
+    className="reservationCard"
+  />
+</div>
+`;
