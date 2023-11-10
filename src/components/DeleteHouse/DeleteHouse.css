@@ -41,16 +41,16 @@
   border: 1px solid black;
   background: none;
   border-radius: 1rem;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem;
   font-weight: 500;
 }
 
 .deleteButton:hover {
   color: white;
-  background-color: rgb(148, 55, 55);
+  background-color: rgb(148 55 55);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .deleteHouse {
     display: flex;
     flex-direction: row;
@@ -65,7 +65,7 @@
   }
 }
 
-@media (min-width: 1080px) {
+@media (width >= 1080px) {
   .deleteHouse {
     display: flex;
     flex-direction: row;

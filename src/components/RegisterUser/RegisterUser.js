@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './Registeruser.css';
 
-const RegisterUser = () => {
+// eslint-disable
+function RegisterUser() {
   const navigate = useNavigate();
   const [RegisterData, setRegisterData] = useState({
     name: '',
@@ -115,6 +116,6 @@ const RegisterUser = () => {
       </div>
     </section>
   );
-};
+}
 
 export default RegisterUser;

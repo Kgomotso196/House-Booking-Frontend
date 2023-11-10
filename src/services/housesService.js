@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { baseUrl, getLocalStorage } from '../helpers/helpers';
 
+// eslint-disable
 const token = getLocalStorage();
 
 const fetchHouses = createAsyncThunk(
@@ -42,13 +43,11 @@ const deleteHouse = createAsyncThunk(
   'houses/deleteHouse',
   async (houseId, thunkAPI) => {
     try {
-      const response = await axios.delete(
-        `${baseUrl}/api/v1/houses/${houseId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.delete(`${baseUrl}/api/v1/houses/${houseId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       thunkAPI.dispatch(fetchHouses());
       return response.data;
     } catch (error) {

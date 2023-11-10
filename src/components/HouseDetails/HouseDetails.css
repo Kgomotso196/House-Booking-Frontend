@@ -89,7 +89,7 @@
   text-align: end !important;
 }
 
-@media (max-width: 576px) {
+@media (width <= 576px) {
   #house-img-details {
     position: relative;
     border-radius: 50%;
@@ -118,7 +118,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
   #house-img-details {
     display: none;
   }

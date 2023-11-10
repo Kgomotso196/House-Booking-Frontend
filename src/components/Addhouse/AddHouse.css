@@ -4,8 +4,7 @@
   width: 80%;
   margin: auto;
   margin-left: 300px;
-  justify-items: center;
-  align-items: center;
+  place-items: center center;
 }
 
 .add-house-form {
@@ -38,7 +37,7 @@
   box-shadow: 0 0 5px red;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .add-house {
     width: 100%;
     margin-left: 5%;

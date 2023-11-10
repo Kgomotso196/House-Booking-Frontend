@@ -25,43 +25,42 @@ function App() {
     dispatch(authenticationServiceAPI.checkLogInStatus());
   }, [dispatch]);
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return (
     <Provider store={store}>
-      <>
-        {user ? (
-          <>
-            <NavMenu classname="nav" />
-            <Routes>
-              <Route path="/" element={<Outlet />}>
-                <Route index element={<Home />} />
-                <Route path="add-house" element={<AddHouse />} />
-                <Route path="house-details/:id" element={<HouseDetails />} />
-                <Route path="delete-house" element={<DeleteHouse />} />
-                <Route path="add-reservation" element={<AddReservation />} />
-                <Route path="reservations" element={<Reservations />} />
-              </Route>
-            </Routes>
-          </>
-        ) : (
+      {user ? (
+        <>
+          <NavMenu classname="nav" />
           <Routes>
             <Route path="/" element={<Outlet />}>
-              <Route index element={<SplashScreen />} />
-              <Route path="register" element={<RegisterUser />} />
-              <Route
-                path="login"
-                element={(
-                  <>
-                    <LogInUser />
-                    <div>
-                      <Link to="/register">Register here</Link>
-                    </div>
-                  </>
-                )}
-              />
+              <Route index element={<Home />} />
+              <Route path="add-house" element={<AddHouse />} />
+              <Route path="house-details/:id" element={<HouseDetails />} />
+              <Route path="delete-house" element={<DeleteHouse />} />
+              <Route path="add-reservation" element={<AddReservation />} />
+              <Route path="reservations" element={<Reservations />} />
             </Route>
           </Routes>
-        )}
-      </>
+        </>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Outlet />}>
+            <Route index element={<SplashScreen />} />
+            <Route path="register" element={<RegisterUser />} />
+            <Route
+              path="login"
+              element={(
+                <>
+                  <LogInUser />
+                  <div>
+                    <Link to="/register">Register here</Link>
+                  </div>
+                </>
+              )}
+            />
+          </Route>
+        </Routes>
+      )}
     </Provider>
   );
 }

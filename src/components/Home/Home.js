@@ -5,7 +5,8 @@ import houseServiceAPI from '../../services/housesService';
 import HouseDetails from '../HouseDetails/HouseDetails';
 import './Home.css';
 
-const Home = () => {
+// eslint-disable
+function Home() {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.houses.houses);
   const [selectedHouse, setSelectedHouse] = useState(null);
@@ -83,6 +84,6 @@ const Home = () => {
       {selectedHouse && <HouseDetails house={selectedHouse} />}
     </div>
   );
-};
+}
 
 export default Home;

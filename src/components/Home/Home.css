@@ -112,7 +112,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .home-page {
     display: flex;
     flex-direction: column;
@@ -134,7 +134,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (width <= 576px) {
   .welcome-msg {
     font-size: 16px;
     position: unset;

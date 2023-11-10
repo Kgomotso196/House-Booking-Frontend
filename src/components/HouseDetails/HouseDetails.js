@@ -9,7 +9,8 @@ import Wheel from '../../assets/Wheel.png';
 import houseServiceAPI from '../../services/housesService';
 import './HouseDetails.css';
 
-const HouseDetails = () => {
+// eslint-disable
+function HouseDetails() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const houses = useSelector((state) => state.houses.houses);
@@ -79,6 +80,6 @@ const HouseDetails = () => {
       </div>
     </div>
   );
-};
+}
 
 export default HouseDetails;

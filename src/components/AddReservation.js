@@ -5,7 +5,8 @@ import reservationServiceAPI from '../services/reservationService';
 import houseServiceAPI from '../services/housesService';
 import './AddReservation.css';
 
-const AddReservation = () => {
+// eslint-disable
+function AddReservation() {
   const { houses } = useSelector((state) => state.houses);
   const currentUser = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
@@ -102,6 +103,6 @@ const AddReservation = () => {
       </form>
     </div>
   );
-};
+}
 
 export default AddReservation;

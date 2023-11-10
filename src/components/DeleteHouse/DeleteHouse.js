@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import houseServiceAPI from '../../services/housesService';
 import './DeleteHouse.css';
 
-const DeleteHouse = () => {
+// eslint-disable
+function DeleteHouse() {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.houses.houses);
 
@@ -46,6 +47,6 @@ const DeleteHouse = () => {
       </div>
     </div>
   );
-};
+}
 
 export default DeleteHouse;

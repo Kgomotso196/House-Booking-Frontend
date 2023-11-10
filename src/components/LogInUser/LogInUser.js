@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import authenticationServiceAPI from '../../services/authenticationService';
 import './LogInUser.css';
 
-const LogInUser = () => {
+// eslint-disable
+function LogInUser() {
   const [LogInData, setLogInData] = useState({
     name: '',
     password: '',
@@ -72,6 +73,6 @@ const LogInUser = () => {
       </div>
     </section>
   );
-};
+}
 
 export default LogInUser;

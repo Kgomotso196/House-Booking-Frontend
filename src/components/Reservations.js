@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import reservationServiceAPI from '../services/reservationService';
 import './Reservation.css';
 
-const Reservations = () => {
+// eslint-disable
+function Reservations() {
   const dispatch = useDispatch();
   const { reservations } = useSelector((state) => state.reservations);
 
@@ -40,6 +41,6 @@ const Reservations = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default Reservations;

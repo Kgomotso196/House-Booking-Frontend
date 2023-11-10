@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addHouse } from '../../redux/slices/PostHousesSlice';
 import './AddHouse.css';
 
-const AddHouse = () => {
+function AddHouse() {
   const dispatch = useDispatch();
   const [error, setError] = useState('');
   const [houseData, setHouseData] = useState({
@@ -127,6 +127,6 @@ const AddHouse = () => {
       </form>
     </div>
   );
-};
+}
 
 export default AddHouse;

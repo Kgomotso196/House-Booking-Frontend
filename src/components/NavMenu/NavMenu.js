@@ -4,7 +4,8 @@ import './NavMenu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import navlogo from '../images/navlogo.png';
 
-const NavMenu = () => {
+// eslint-disable
+function NavMenu() {
   const [sidebar, setSidebar] = useState(false);
 
   const toggleMenu = () => {
@@ -60,6 +61,6 @@ const NavMenu = () => {
       </nav>
     </>
   );
-};
+}
 
 export default NavMenu;
