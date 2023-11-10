@@ -1,0 +1,82 @@
+.headingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .deleteHouseContainer {
+
+} */
+
+.deleteHouseWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.deleteHouse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 5rem;
+  background-color: #97bf11;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.deleteHouse div {
+  color: white;
+  font-weight: 350;
+  text-transform: uppercase;
+}
+
+.houseImage {
+  width: 10rem;
+}
+
+.deleteButton {
+  border: 1px solid black;
+  background: none;
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  font-weight: 500;
+}
+
+.deleteButton:hover {
+  color: white;
+  background-color: rgb(148, 55, 55);
+}
+
+@media (min-width: 768px) {
+  .deleteHouse {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .deleteHouseWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  .deleteHouse {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+  }
+
+  .deleteHouseWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 4rem;
+  }
+}

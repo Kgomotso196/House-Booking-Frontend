@@ -1,0 +1,50 @@
+.add-house {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  margin-left: 300px;
+  justify-items: center;
+  align-items: center;
+}
+
+.add-house-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.btn {
+  background-color: #97bf0f;
+  border: none;
+}
+
+.btn:hover {
+  background-color: green;
+}
+
+.form-label {
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.input-error {
+  border: 2px solid red;
+  box-shadow: 0 0 5px red;
+}
+
+@media (max-width: 600px) {
+  .add-house {
+    width: 100%;
+    margin-left: 5%;
+  }
+
+  .add-house-form {
+    width: 100%;
+  }
+}

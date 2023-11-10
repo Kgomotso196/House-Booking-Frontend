@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test House Component it renders correctly 1`] = `
+<div
+  className="reservationCard"
+>
+  <h1>
+    Add Reservation
+  </h1>
+  <form
+    className="resrevationForm"
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="formElement"
+        htmlFor="checking_date"
+      >
+        <div>
+          Checking Date:
+        </div>
+        <input
+          className="reservationInput"
+          id="checking_date"
+          name="checking_date"
+          onChange={[Function]}
+          placeholder="dd/mm/yyyy"
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    <div>
+      <label
+        className="formElement"
+        htmlFor="checkout_date"
+      >
+        <div>
+          Checkingout Date:
+        </div>
+        <input
+          className="reservationInput"
+          id="checkout_date"
+          name="checkout_date"
+          onChange={[Function]}
+          placeholder="dd/mm/yyyy"
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    <div>
+      <label
+        className="formElement"
+        htmlFor="city"
+      >
+        <div>
+          City:
+        </div>
+        <input
+          className="reservationInput"
+          id="city"
+          name="city"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    <div>
+      <label
+        className="formElement"
+        htmlFor="house_price"
+      >
+        <div>
+          House Price:
+        </div>
+        <input
+          className="reservationInput"
+          id="house_price"
+          name="house_price"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    <div>
+      <label
+        className="formElement"
+        htmlFor="house"
+      >
+        Select House
+        <select
+          name="house"
+          onChange={[Function]}
+          value=""
+        >
+          <option
+            value=""
+          >
+            Select a house
+          </option>
+        </select>
+      </label>
+    </div>
+    <button
+      onClick={[Function]}
+      type="submit"
+    >
+      Add Reservation
+    </button>
+  </form>
+</div>
+`;

@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test AddHouse Component it renders correctly 1`] = `
+<div
+  className="add-house"
+>
+  <h1>
+    ADD A NEW HOUSE
+  </h1>
+  <form
+    className="add-house-form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="form-label"
+      htmlFor="houseName"
+    >
+      House Name
+      <input
+        className="form-control"
+        id="houseName"
+        name="name"
+        onChange={[Function]}
+        placeholder="Enter House Name"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      className="form-label"
+      htmlFor="houseimage"
+    >
+      House Image
+      <input
+        className="form-control "
+        id="houseimage"
+        name="image"
+        onChange={[Function]}
+        placeholder="Enter House image"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      className="form-label"
+      htmlFor="houseLocation"
+    >
+      House Location
+      <input
+        className="form-control"
+        id="houseLocation"
+        name="location"
+        onChange={[Function]}
+        placeholder="Enter House Location"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      className="form-label"
+      htmlFor="houseDescription"
+    >
+      Description
+      <input
+        className="form-control"
+        id="houseDescription"
+        name="description"
+        onChange={[Function]}
+        placeholder="Enter Description"
+        type="text"
+        value=""
+      />
+    </label>
+    <div>
+      <input
+        className="btn btn-primary"
+        type="submit"
+        value="ADD HOUSE"
+      />
+    </div>
+  </form>
+</div>
+`;
